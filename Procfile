@@ -1,1 +1,1 @@
-web: make run-simulator
+web: make run-consumer
