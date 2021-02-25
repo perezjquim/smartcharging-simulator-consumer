@@ -1,0 +1,115 @@
+{
+        "_version": "1.0.0",
+        "sap.app":
+        {
+                "id": "com.perezjquim.energysim",
+                "type": "application",
+                "i18n": "i18n/i18n.properties",
+                "title": "{{appTitle}}",
+                "description": "{{appDescription}}",
+                "applicationVersion":
+                {
+                        "version": "1.0.0"
+                }
+        },
+        "sap.ui":
+        {
+                "technology": "UI5",
+                "icons":
+                {
+                        "icon": "",
+                        "favIcon": "",
+                        "phone": "",
+                        "phone@2": "",
+                        "tablet": "",
+                        "tablet@2": ""
+                },
+                "deviceTypes":
+                {
+                        "desktop": true,
+                        "tablet": true,
+                        "phone": true
+                }
+        },
+        "sap.ui5":
+        {
+                "rootView":
+                {
+                        "viewName": "com.perezjquim.energysim.view.App",
+                        "type": "XML",
+                        "async": true,
+                        "id": "app"
+                },
+                "dependencies":
+                {
+                        "minUI5Version": "1.36.0",
+                        "libs":
+                        {
+                                "sap.ui.core":
+                                {},
+                                "sap.m":
+                                {},
+                                "sap.ui.layout":
+                                {}
+                        }
+                },
+                "contentDensities":
+                {
+                        "compact": true,
+                        "cozy": true
+                },
+                "models":
+                {
+                        "i18n":
+                        {
+                                "type": "sap.ui.model.resource.ResourceModel",
+                                "settings":
+                                {
+                                        "bundleName": "com.perezjquim.energysim.i18n.i18n"
+                                }
+                        },
+                        "config":
+                        {
+                                "type": "sap.ui.model.json.JSONModel",
+                                "uri": "model/config.json"
+                        },
+                        "ws_data":
+                        {
+                                "type": "sap.ui.model.json.JSONModel"
+                        }
+                },
+                "resources":
+                {
+                        "css": [
+                        {
+                                "uri": "css/style.css"
+                        }]
+                },
+                "routing":
+                {
+                        "config":
+                        {
+                                "routerClass": "sap.m.routing.Router",
+                                "viewType": "XML",
+                                "viewPath": "com.perezjquim.energysim.view",
+                                "controlId": "app",
+                                "controlAggregation": "pages",
+                                "transition": "slide",
+                                "async": true
+                        },
+                        "routes": [
+                        {
+                                "pattern": "",
+                                "name": "Home",
+                                "target": ["Home"]
+                        }],
+                        "targets":
+                        {
+                                "Home":
+                                {
+                                        "viewName": "Home"
+                                }
+                        }
+                }
+        }
+}
