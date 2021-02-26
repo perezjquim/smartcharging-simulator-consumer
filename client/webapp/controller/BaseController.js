@@ -1,7 +1,7 @@
 sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller)
 {
         "use strict";
-        return Controller.extend("com.perezjquim.energysim.controller.BaseController",
+        return Controller.extend("com.perezjquim.energysim.client.controller.BaseController",
         {
                 getModel: function(sName)
                 {

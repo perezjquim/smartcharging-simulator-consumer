@@ -1,7 +1,7 @@
 sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/core/Control"], function(UIComponent, Control)
 {
         "use strict";
-        return UIComponent.extend("com.perezjquim.energysim.Component",
+        return UIComponent.extend("com.perezjquim.energysim.client.Component",
         {
                 metadata:
                 {

@@ -4,20 +4,20 @@ PATTERN_END=««««««««««««««««««««««««««««««««««
 
 BUILDPACK_BUILDER=heroku/buildpacks:18
 
-CONSUMER_PACK_NAME=pack_energysim_consumer
-CONSUMER_CONTAINER_NAME=cont_energysim_consumer
-CONSUMER_FLASK_HOST=0.0.0.0
-CONSUMER_FLASK_PORT=9090
-CONSUMER_FLASK_PORT_EXTERNAL=9091:9090
+CLIENT_PACK_NAME=pack_energysim_client
+CLIENT_CONTAINER_NAME=cont_energysim_client
+CLIENT_FLASK_HOST=0.0.0.0
+CLIENT_FLASK_PORT=9090
+CLIENT_FLASK_PORT_EXTERNAL=9091:9090
 # < CONSTANTS
 
-main: stop-docker-consumer run-docker-consumer
+main: stop-docker-client run-docker-client
 
-# > DOCKER-CONSUMER
-run-docker-consumer: build-docker-consumer start-docker-consumer
+# > DOCKER-CLIENT
+run-docker-client: build-docker-client start-docker-client
 
-build-docker-consumer:
-	@echo '$(PATTERN_BEGIN) BUILDING CONSUMER PACK...'
+build-docker-client:
+	@echo '$(PATTERN_BEGIN) BUILDING CLIENT PACK...'
 
 	@pipreqs --force --savepath requirements.txt.tmp
 	@sort -r requirements.txt.tmp > requirements.txt.tmp.sorted
@@ -26,37 +26,37 @@ build-docker-consumer:
 	@rm -f requirements.txt.tmp
 	@rm -f requirements.txt.tmp.sorted
 	
-	@pack build $(CONSUMER_PACK_NAME) \
+	@pack build $(CLIENT_PACK_NAME) \
 	--builder $(BUILDPACK_BUILDER) \
 	--pull-policy if-not-present \
 	--verbose
 
-	@echo '$(PATTERN_END) CONSUMER PACK BUILT!'
+	@echo '$(PATTERN_END) CLIENT PACK BUILT!'
 
-start-docker-consumer:
-	@echo '$(PATTERN_BEGIN) STARTING CONSUMER PACK...'
+start-docker-client:
+	@echo '$(PATTERN_BEGIN) STARTING CLIENT PACK...'
 
 	@docker run -d \
-	--name $(CONSUMER_CONTAINER_NAME) \
-	-p $(CONSUMER_FLASK_PORT_EXTERNAL) \
-	$(CONSUMER_PACK_NAME)
+	--name $(CLIENT_CONTAINER_NAME) \
+	-p $(CLIENT_FLASK_PORT_EXTERNAL) \
+	$(CLIENT_PACK_NAME)
 	
-	@echo '$(PATTERN_END) CONSUMER PACK STARTED!'
+	@echo '$(PATTERN_END) CLIENT PACK STARTED!'
 
-stop-docker-consumer:
-	@echo '$(PATTERN_BEGIN) STOPPING CONSUMER PACK...'
+stop-docker-client:
+	@echo '$(PATTERN_BEGIN) STOPPING CLIENT PACK...'
 
-	@( docker rm -f $(CONSUMER_CONTAINER_NAME) ) || true
+	@( docker rm -f $(CLIENT_CONTAINER_NAME) ) || true
 
-	@echo '$(PATTERN_END) CONSUMER PACK STOPPED!'	
-# < DOCKER-CONSUMER
+	@echo '$(PATTERN_END) CLIENT PACK STOPPED!'	
+# < DOCKER-CLIENT
 
-# > CONSUMER
-run-consumer: start-consumer
+# > CLIENT
+run-client: start-client
 
-start-consumer:
-	@FLASK_APP=consumer/main.py \
+start-client:
+	@FLASK_APP=client/main.py \
 	python3 -m flask run \
-	--host=$(CONSUMER_FLASK_HOST) \
-	--port=$(CONSUMER_FLASK_PORT)
-# < CONSUMER
+	--host=$(CLIENT_FLASK_HOST) \
+	--port=$(CLIENT_FLASK_PORT)
+# < CLIENT

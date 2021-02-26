@@ -2,7 +2,7 @@
         "_version": "1.0.0",
         "sap.app":
         {
-                "id": "com.perezjquim.energysim",
+                "id": "com.perezjquim.energysim.client",
                 "type": "application",
                 "i18n": "i18n/i18n.properties",
                 "title": "{{appTitle}}",
@@ -35,7 +35,7 @@
         {
                 "rootView":
                 {
-                        "viewName": "com.perezjquim.energysim.view.App",
+                        "viewName": "com.perezjquim.energysim.client.view.App",
                         "type": "XML",
                         "async": true,
                         "id": "app"
@@ -65,7 +65,7 @@
                                 "type": "sap.ui.model.resource.ResourceModel",
                                 "settings":
                                 {
-                                        "bundleName": "com.perezjquim.energysim.i18n.i18n"
+                                        "bundleName": "com.perezjquim.energysim.client.i18n.i18n"
                                 }
                         },
                         "config":
@@ -91,7 +91,7 @@
                         {
                                 "routerClass": "sap.m.routing.Router",
                                 "viewType": "XML",
-                                "viewPath": "com.perezjquim.energysim.view",
+                                "viewPath": "com.perezjquim.energysim.client.view",
                                 "controlId": "app",
                                 "controlAggregation": "pages",
                                 "transition": "slide",

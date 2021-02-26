@@ -1,1 +1,1 @@
-web: make run-consumer
+web: make run-client
