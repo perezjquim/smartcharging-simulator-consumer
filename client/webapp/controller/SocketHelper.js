@@ -9,7 +9,7 @@ sap.ui.define(["./MessageHelper"], function(MessageHelper)
                         this._oSocket.addEventListener('open', function(oEvent)
                         {
                                 console.log("CONNECTED");
-                                this._sendMessage('Hello Server!');
+                                this.sendMessage('Hello Server!');
                         }.bind(this));
                         this._oSocket.addEventListener('message', function(oEvent)
                         {
@@ -18,7 +18,7 @@ sap.ui.define(["./MessageHelper"], function(MessageHelper)
                                 MessageHelper.parse(oController, sReceivedMessage);
                         }.bind(this));
                 },
-                _sendMessage: function(sMessage)
+                sendMessage: function(sMessage)
                 {
                         this._oSocket.send(sMessage);
                 }
