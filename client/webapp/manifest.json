@@ -73,7 +73,7 @@
                                 "type": "sap.ui.model.json.JSONModel",
                                 "uri": "model/config.json"
                         },
-                        "ws_data":
+                        "ws_logs":
                         {
                                 "type": "sap.ui.model.json.JSONModel"
                         }

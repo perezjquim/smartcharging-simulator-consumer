@@ -9,11 +9,11 @@ sap.ui.define(["./BaseController", "./SocketHelper"], function(BaseController, S
                 },
                 onPressStart: function(oEvent)
                 {
-                	SocketHelper.sendMessage("COMMAND$START-SIMULATION");		
+                        SocketHelper.sendMessage('command', 'START-SIMULATION');
                 },
                 onPressStop: function(oEvent)
                 {
-                	SocketHelper.sendMessage("COMMAND$STOP-SIMULATION");
+                        SocketHelper.sendMessage('command', 'STOP-SIMULATION');
                 }
         });
 });

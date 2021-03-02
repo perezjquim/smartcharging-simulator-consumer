@@ -1,21 +1,36 @@
 sap.ui.define([], function()
 {
         return {
+                MESSAGE_TYPES:
+                {
+                        Log: 'log'
+                },
                 parse: function(oController, sMessage)
                 {
-                        switch (true)
+                        const oMessage = JSON.parse(sMessage);
+                        const sMessageType = oMessage['message_type'];
+                        const sMessageValue = oMessage['message_value'];
+                        switch (sMessageType)
                         {
-                                case true:
-                                        this._storeLog(oController, sMessage);
+                                case this.MESSAGE_TYPES.Log:
+                                        this._storeLog(oController, sMessageValue);
                                         break;
                         }
                 },
-                _storeLog: function(oController, sMessage)
+                _storeLog: function(oController, sMessageValue)
                 {
-                        const oSocketModel = oController.getModel("ws_data");
-                        const sOldData = oSocketModel.getProperty("/logs");
-                        const sNewData = (sOldData || "") + `${sMessage}\n`;
-                        oSocketModel.setProperty("/logs", sNewData);
+                        const oLogsModel = oController.getModel("ws_logs");
+                        const sOldData = oLogsModel.getData();
+                        var sNewData = sOldData;                                        
+                        if(sOldData.length > 0)
+                        {
+                                sNewData += `\n${sMessageValue}`;
+                        }
+                        else
+                        {
+                                sNewData = sMessageValue;
+                        }
+                        oLogsModel.setData(sNewData);
                 }
         };
 })

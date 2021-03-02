@@ -33,12 +33,7 @@
 							<uxap:subSections>
 								<uxap:ObjectPageSubSection title="Subsection 1.1" titleUppercase="false">
 									<uxap:blocks>
-										<TextArea width="100%" height="20vw" editable="false" value="{ws_data>/logs}"/>
-									</uxap:blocks>
-								</uxap:ObjectPageSubSection>
-								<uxap:ObjectPageSubSection title="Subsection 1.2" titleUppercase="false">
-									<uxap:blocks>
-										<Text text="ttt"/>
+										<TextArea value="{= ${ws_logs>/} || '' }" editable="false" width="100%" height="40vw"/>
 									</uxap:blocks>
 								</uxap:ObjectPageSubSection>
 							</uxap:subSections>
