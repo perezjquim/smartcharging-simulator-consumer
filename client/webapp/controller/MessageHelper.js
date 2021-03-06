@@ -13,8 +13,8 @@ sap.ui.define([], function()
                         switch (sMessageType)
                         {
                                 case this.MESSAGE_TYPES.Log:
-                                        this._storeLog(oController, sMessageValue);
-                                        break;
+                                this._storeLog(oController, sMessageValue);
+                                break;
                         }
                 },
                 _storeLog: function(oController, sMessageValue)

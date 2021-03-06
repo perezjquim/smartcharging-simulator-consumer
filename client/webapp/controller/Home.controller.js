@@ -5,7 +5,7 @@ sap.ui.define(["./BaseController", "./SocketHelper"], function(BaseController, S
         {
                 onBeforeRendering: function(oEvent)
                 {
-                        SocketHelper.init(this);
+                        SocketHelper.init(this); 
                 },
                 onPressStart: function(oEvent)
                 {

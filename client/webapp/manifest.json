@@ -1,22 +1,18 @@
 {
         "_version": "1.0.0",
-        "sap.app":
-        {
+        "sap.app": {
                 "id": "com.perezjquim.energysim.client",
                 "type": "application",
                 "i18n": "i18n/i18n.properties",
                 "title": "{{appTitle}}",
                 "description": "{{appDescription}}",
-                "applicationVersion":
-                {
+                "applicationVersion": {
                         "version": "1.0.0"
                 }
         },
-        "sap.ui":
-        {
+        "sap.ui": {
                 "technology": "UI5",
-                "icons":
-                {
+                "icons": {
                         "icon": "",
                         "favIcon": "",
                         "phone": "",
@@ -24,71 +20,55 @@
                         "tablet": "",
                         "tablet@2": ""
                 },
-                "deviceTypes":
-                {
+                "deviceTypes": {
                         "desktop": true,
                         "tablet": true,
                         "phone": true
                 }
         },
-        "sap.ui5":
-        {
-                "rootView":
-                {
+        "sap.ui5": {
+                "rootView": {
                         "viewName": "com.perezjquim.energysim.client.view.App",
                         "type": "XML",
                         "async": true,
                         "id": "app"
                 },
-                "dependencies":
-                {
+                "dependencies": {
                         "minUI5Version": "1.36.0",
-                        "libs":
-                        {
-                                "sap.ui.core":
-                                {},
-                                "sap.m":
-                                {},
-                                "sap.ui.layout":
-                                {}
-                        }
-                },
-                "contentDensities":
-                {
+                        "libs": {
+                                "sap.ui.core": {},
+                                "sap.m": {},
+                                "sap.ui.layout": {}}},
+                "contentDensities": {
                         "compact": true,
                         "cozy": true
                 },
-                "models":
-                {
-                        "i18n":
-                        {
+                "models": {
+                        "i18n": {
                                 "type": "sap.ui.model.resource.ResourceModel",
-                                "settings":
-                                {
+                                "settings": {
                                         "bundleName": "com.perezjquim.energysim.client.i18n.i18n"
                                 }
                         },
-                        "config":
-                        {
+                        "config": {
                                 "type": "sap.ui.model.json.JSONModel",
                                 "uri": "model/config.json"
                         },
-                        "ws_logs":
-                        {
+                        "navigation": {
+                                "type": "sap.ui.model.json.JSONModel",
+                                "uri": "model/navigation.json"
+                        },
+                        "ws_logs": {
                                 "type": "sap.ui.model.json.JSONModel"
                         }
                 },
-                "resources":
-                {
-                        "css": [
-                        {
+                "resources": {
+                        "css": [{
                                 "uri": "css/style.css"
                         }]
                 },
-                "routing":
-                {
-                        "config":
-                        {
+                "routing": {
+                        "config": {
                                 "routerClass": "sap.m.routing.Router",
                                 "viewType": "XML",
                                 "viewPath": "com.perezjquim.energysim.client.view",
@@ -97,17 +77,42 @@
                                 "transition": "slide",
                                 "async": true
                         },
-                        "routes": [
-                        {
+                        "routes": [{
                                 "pattern": "",
                                 "name": "Home",
                                 "target": ["Home"]
+                        }, {
+                                "pattern": "Cars",
+                                "name": "Cars",
+                                "target": ["Cars"]
+                        }, {
+                                "pattern": "Plugs",
+                                "name": "Plugs",
+                                "target": ["Plugs"]
+                        }, {
+                                "pattern": "Travels",
+                                "name": "Travels",
+                                "target": ["Travels"]
+                        }, {
+                                "pattern": "Logs",
+                                "name": "Logs",
+                                "target": ["Logs"]
                         }],
-                        "targets":
-                        {
-                                "Home":
-                                {
+                        "targets": {
+                                "Home": {
                                         "viewName": "Home"
+                                },
+                                "Cars": {
+                                        "viewName": "Cars"
+                                },
+                                "Plugs": {
+                                        "viewName": "Plugs"
+                                },
+                                "Travels": {
+                                        "viewName": "Travels"
+                                },
+                                "Logs": {
+                                        "viewName": "Logs"
                                 }
                         }
                 }

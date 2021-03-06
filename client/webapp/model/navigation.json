@@ -1,0 +1,26 @@
+{
+        "items": 
+        [
+                {
+                        "key": "Home",
+                        "icon": "sap-icon://home"
+                },                         
+        	{
+        		"key": "Cars",
+        		"icon": "sap-icon://car-rental"
+        	},        	
+        	{
+        		"key": "Plugs",
+        		"icon": "sap-icon://connected"
+        	},        	
+        	{
+        		"key": "Travels",
+        		"icon": "sap-icon://map-2"
+        	},        	     	
+        	{
+        		"key": "Logs",
+        		"icon": "sap-icon://documents"
+        	}
+	],
+        "selected": null
+}
