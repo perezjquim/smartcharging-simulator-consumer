@@ -1,5 +1,12 @@
-<mvc:View controllerName="com.perezjquim.energysim.client.controller.Travels" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns:uxap="sap.uxap">
-	<Page title="{i18n>Travels}">
-		<Text text="333"/>
-	</Page>
+<mvc:View 
+    controllerName="com.perezjquim.energysim.client.controller.Travels" 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page 
+    	title="{i18n>Travels}">
+        <Text 
+        	text="333"/>
+    </Page>
 </mvc:View>

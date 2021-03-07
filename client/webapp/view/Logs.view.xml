@@ -1,5 +1,17 @@
-<mvc:View controllerName="com.perezjquim.energysim.client.controller.Logs" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns:uxap="sap.uxap">
-	<Page title="{i18n>Logs}">
-		<TextArea editable="false" width="100%" height="40vh" value="{ws_logs>/}"/>
-	</Page>
+<mvc:View 
+    controllerName="com.perezjquim.energysim.client.controller.Logs" 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns:uxap="sap.uxap">
+    <Page 
+    	title="{i18n>Logs}">
+        <TextArea 
+        	editable="false" 
+        	width="100%" 
+        	height="40vh" 
+        	value="{ws_logs>/}"/>
+    </Page>
 </mvc:View>

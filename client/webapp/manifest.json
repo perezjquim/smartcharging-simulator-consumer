@@ -63,7 +63,11 @@
                         },
                         "ws_data": {
                                 "type": "sap.ui.model.json.JSONModel"
-                        }                        
+                        },
+                        "ws_state": {
+                                "type": "sap.ui.model.json.JSONModel",
+                                "uri": "model/ws_state.json"
+                        }       
                 },
                 "resources": {
                         "css": [{

@@ -1,17 +1,35 @@
-<mvc:View controllerName="com.perezjquim.energysim.client.controller.App" xmlns="sap.m" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt">
-	<tnt:ToolPage>
-		<tnt:header>
-			<f:ShellBar homeIcon="https://sap.github.io/ui5-webcomponents/assets/images/ui5.png" homeIconPressed="onHomeButtonPress" menuButtonPressed="onMenuButtonPress" notificationsNumber="0" showMenuButton="true" showNotifications="true" title="{i18n>appTitle}"/>
-		</tnt:header>
-		<tnt:sideContent>
-			<tnt:SideNavigation expanded="false" itemSelect="onNavigationItemSelect" selectedKey="{navigation>/selected}">
-				<tnt:NavigationList items="{navigation>/items}">
-					<tnt:NavigationListItem icon="{navigation>icon}" key="{navigation>key}" text="{ path: 'navigation>key', formatter: '.getText' }"/>
-				</tnt:NavigationList>
-			</tnt:SideNavigation>
-		</tnt:sideContent>
-		<tnt:mainContents>
-			<App id="app"/>
-		</tnt:mainContents>
-	</tnt:ToolPage>
+<mvc:View 
+    controllerName="com.perezjquim.energysim.client.controller.App"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt">
+    <tnt:ToolPage>
+        <tnt:header>
+            <f:ShellBar 
+            	homeIcon="https://sap.github.io/ui5-webcomponents/assets/images/ui5.png" 
+            	homeIconPressed="onHomeButtonPress" 
+            	menuButtonPressed="onMenuButtonPress" 
+            	showMenuButton="true" 
+            	title="{i18n>appTitle}"/>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation 
+            	expanded="false" 
+            	itemSelect="onNavigationItemSelect" 
+            	selectedKey="{navigation>/selected}">
+                <tnt:NavigationList 
+                	items="{navigation>/items}">
+                    <tnt:NavigationListItem 
+                    	icon="{navigation>icon}" 
+                    	key="{navigation>key}" 
+                    	text="{ path: 'navigation>key', formatter: '.getText' }"/>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <App 
+            	id="app"/>
+        </tnt:mainContents>
+    </tnt:ToolPage>
 </mvc:View>

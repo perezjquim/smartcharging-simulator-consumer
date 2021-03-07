@@ -6,6 +6,7 @@ sap.ui.define(["sap/ui/base/Object"], function(Object)
                 MESSAGE_TYPES:
                 {
                         LOG: 'log',
+                        STATE: 'state',
                         DATA: 'data'
                 },
                 constructor: function(oController)
@@ -19,6 +20,10 @@ sap.ui.define(["sap/ui/base/Object"], function(Object)
                         const sMessageValue = oMessage['message_value'];
                         switch (sMessageType)
                         {
+                                case this.MESSAGE_TYPES.STATE:
+                                this._storeState(sMessageValue);
+                                break;
+
                                 case this.MESSAGE_TYPES.LOG:
                                 this._storeLog(sMessageValue);
                                 break;
@@ -28,6 +33,11 @@ sap.ui.define(["sap/ui/base/Object"], function(Object)
                                 break;                                
                         }
                 },
+                _storeState: function(oData)
+                {
+                        const oModel = this._oController.getModel("ws_state");       
+                        oModel.setProperty("/is_sim_running", oData.is_sim_running);
+                },               
                 _storeLog: function(sMessageValue)
                 {
                         const oLogsModel = this._oController.getModel("ws_logs");

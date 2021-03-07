@@ -1,6 +1,40 @@
-<mvc:View controllerName="com.perezjquim.energysim.client.controller.Home" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns:uxap="sap.uxap">
-	<Page title="{i18n>Home}">
-		<Button icon="sap-icon://play" press="onPressStart" text="{i18n>start_sim}" type="Accept"/>
-		<Button icon="sap-icon://stop" press="onPressStop" text="{i18n>stop_sim}" type="Reject"/>
-	</Page>
+<mvc:View 
+    controllerName="com.perezjquim.energysim.client.controller.Home" 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page 
+    	title="{i18n>Home}">
+        <f:SimpleForm 
+        	editable="false">
+            <f:content>
+                <Label 
+                	text="{i18n>ws_connection_state}" />
+                <ObjectStatus 
+                	icon="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
+                	text="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusText' }" 
+                	state="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatus' }" />
+                <Label 
+                	text="{i18n>sim_state}" />
+                <ObjectStatus 
+                	icon="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
+                	text="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
+                	state="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatus' }" />
+                <Button 
+                	icon="sap-icon://play" 
+                	press="onPressStart" 
+                	text="{i18n>start_sim}" 
+                	type="Accept" 
+                	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"/>
+                <Button
+                	icon="sap-icon://stop" 
+                	press="onPressStop" 
+                	text="{i18n>stop_sim}" 
+                	type="Reject" 
+                	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
+            </f:content>
+        </f:SimpleForm>
+    </Page>
 </mvc:View>
