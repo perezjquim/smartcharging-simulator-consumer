@@ -43,9 +43,8 @@ sap.ui.define(["sap/ui/base/Object"], function(Object)
                         }
                         oLogsModel.setData(sNewData);
                 },
-                _storeData: function(sMessageValue)
+                _storeData: function(oData)
                 {
-                        const oData = JSON.parse(sMessageValue);
                         const oModel = this._oController.getModel("ws_data");       
                         oModel.setData(oData);
                 }
