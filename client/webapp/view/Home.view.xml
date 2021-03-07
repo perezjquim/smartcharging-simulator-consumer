@@ -1,5 +1,5 @@
 <mvc:View controllerName="com.perezjquim.energysim.client.controller.Home" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt" xmlns:uxap="sap.uxap">
-	<Page title="{i18n>home}">
+	<Page title="{i18n>Home}">
 		<Button icon="sap-icon://play" press="onPressStart" text="{i18n>start_sim}" type="Accept"/>
 		<Button icon="sap-icon://stop" press="onPressStop" text="{i18n>stop_sim}" type="Reject"/>
 	</Page>

@@ -60,7 +60,10 @@
                         },
                         "ws_logs": {
                                 "type": "sap.ui.model.json.JSONModel"
-                        }
+                        },
+                        "ws_data": {
+                                "type": "sap.ui.model.json.JSONModel"
+                        }                        
                 },
                 "resources": {
                         "css": [{

@@ -1,8 +1,12 @@
-sap.ui.define(["./BaseController"], function(BaseController)
+sap.ui.define(["./util/BaseController","./util/SocketHelper"], function(BaseController, SocketHelper)
 {
 	"use strict";
 	return BaseController.extend("com.perezjquim.energysim.client.controller.App",
 	{
+		onInit: function(oEvent)
+		{
+			SocketHelper.init(this); 
+		},
 		onHomeButtonPress: function(oEvent)
 		{
 			const oBar = oEvent.getSource();			

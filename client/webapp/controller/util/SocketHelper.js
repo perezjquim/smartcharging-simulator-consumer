@@ -1,20 +1,21 @@
 sap.ui.define(["./MessageHelper"], function(MessageHelper)
 {
         return {
-                _oSocket: null,
+                _oSocket: null,        
                 init: function(oController)
                 {
+                        const oMessageHelper = new MessageHelper(oController);
+
                         const sSocketUrl = oController.getConfig("WS_URL");
                         this._oSocket = new WebSocket(sSocketUrl);
                         this._oSocket.addEventListener('open', function(oEvent)
                         {
-                                console.log("CONNECTED");
                                 this.sendMessage('init', 'Hello Server!');
                         }.bind(this));
                         this._oSocket.addEventListener('message', function(oEvent)
                         {
                                 const sReceivedMessage = oEvent.data;
-                                MessageHelper.parse(oController, sReceivedMessage);
+                                oMessageHelper.parse(sReceivedMessage);
                         }.bind(this));
                 },
                 sendMessage: function(sMessageType, sMessageValue)
@@ -27,4 +28,4 @@ sap.ui.define(["./MessageHelper"], function(MessageHelper)
                         this._oSocket.send(sMessage);
                 }
         };
-})
+});
