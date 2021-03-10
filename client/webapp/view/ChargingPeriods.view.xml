@@ -34,9 +34,9 @@
                         <Text 
                             text="{ws_data>car_id}"/>
                         <Text 
-                            text="{ws_data>start_datetime}"/>                            
+                            text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>                            
                         <Text 
-                            text="{ws_data>end_datetime}"/>                                                        
+                            text="{ parts: [ 'ws_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>                                                    
                     </cells>
                 </ColumnListItem>
             </items>

@@ -1,7 +1,7 @@
-sap.ui.define(["./util/BaseController"], function(BaseController)
+sap.ui.define(["./util/CarEventController"], function(CarEventController)
 {
         "use strict";
-        return BaseController.extend("com.perezjquim.energysim.client.controller.ChargingPeriods",
+        return CarEventController.extend("com.perezjquim.energysim.client.controller.ChargingPeriods",
         {
 
         });
