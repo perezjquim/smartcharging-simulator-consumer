@@ -67,7 +67,7 @@
                         "ws_state": {
                                 "type": "sap.ui.model.json.JSONModel",
                                 "uri": "model/ws_state.json"
-                        }       
+                        }
                 },
                 "resources": {
                         "css": [{
@@ -101,6 +101,10 @@
                                 "name": "Travels",
                                 "target": ["Travels"]
                         }, {
+                                "pattern": "ChargingPeriods",
+                                "name": "ChargingPeriods",
+                                "target": ["ChargingPeriods"]
+                        }, {
                                 "pattern": "Logs",
                                 "name": "Logs",
                                 "target": ["Logs"]
@@ -117,6 +121,9 @@
                                 },
                                 "Travels": {
                                         "viewName": "Travels"
+                                },
+                                "ChargingPeriods": {
+                                        "viewName": "ChargingPeriods"
                                 },
                                 "Logs": {
                                         "viewName": "Logs"

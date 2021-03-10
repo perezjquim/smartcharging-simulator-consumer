@@ -16,6 +16,12 @@
                 	icon="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
                 	text="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusText' }" 
                 	state="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatus' }" />
+                <Button
+                    icon="sap-icon://synchronize"
+                    press="onPressReconnect"
+                    text="{i18n>ws_reconnect}"
+                    type="Emphasized"
+                    blocked="{= ${ws_state>/is_connected} }"/>                    
                 <Label 
                 	text="{i18n>sim_state}" />
                 <ObjectStatus 

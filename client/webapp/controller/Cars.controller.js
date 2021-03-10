@@ -3,6 +3,11 @@ sap.ui.define(["./util/BaseController","sap/ui/core/ValueState"], function(BaseC
         "use strict";
         return BaseController.extend("com.perezjquim.energysim.client.controller.Cars",
         {
+                formatBatteryLevelText: function(iBatteryLevel)
+                {
+                        const iPercentage = ( iBatteryLevel / 10 ) * 100;
+                        return `${iPercentage}% (${iBatteryLevel} / 10)`;
+                },                
         	formatBatteryLevelState: function(iBatteryLevel)
         	{
         		switch(true)
@@ -14,7 +19,7 @@ sap.ui.define(["./util/BaseController","sap/ui/core/ValueState"], function(BaseC
         			case iBatteryLevel == 10:
         				return ValueState.Success;
         		}
-        	},
+        	},                
         	formatCarStatus: function(bIsCharging, bIsTraveling)
         	{
         		switch(true)
@@ -36,7 +41,7 @@ sap.ui.define(["./util/BaseController","sap/ui/core/ValueState"], function(BaseC
         			case bIsTraveling:
         				return this.getText("car_is_traveling");
         			default:
-        				return this.getText("car_is_ready");
+        				return this.getText("car_is_ready_to_travel");
         		}
         	},
         	formatCarStatusIcon: function(bIsCharging, bIsTraveling)

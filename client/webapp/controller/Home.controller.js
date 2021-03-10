@@ -3,6 +3,13 @@ sap.ui.define(["./util/BaseController", "./util/SocketHelper", "sap/ui/core/Valu
         "use strict";
         return BaseController.extend("com.perezjquim.energysim.client.controller.Home",
         {
+                onPressReconnect: function(oEvent)
+                {
+                        const oButton = oEvent.getSource();
+                        oButton.setBusy(true);
+                        SocketHelper.reconnect();
+                        oButton.setBusy(false);
+                },
                 onPressStart: function(oEvent)
                 {
                         SocketHelper.sendMessage('command', 'START-SIMULATION');

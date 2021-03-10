@@ -16,7 +16,11 @@
         	{
         		"key": "Travels",
         		"icon": "sap-icon://map-2"
-        	},        	     	
+        	},     
+                {
+                        "key": "ChargingPeriods",
+                        "icon": "sap-icon://line-chart-time-axis"
+                },                       	     	
         	{
         		"key": "Logs",
         		"icon": "sap-icon://documents"

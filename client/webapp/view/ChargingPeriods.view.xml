@@ -1,17 +1,17 @@
 <mvc:View 
-    controllerName="com.perezjquim.energysim.client.controller.Travels" 
+    controllerName="com.perezjquim.energysim.client.controller.ChargingPeriods" 
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:mvc="sap.ui.core.mvc">
     <Page 
-    	title="{i18n>Travels}">
+    	title="{i18n>ChargingPeriods}">
         <Table 
-            items="{ws_data>/travels}">
+            items="{ws_data>/charging_periods}">
             <columns>
                 <Column>
                     <Text 
-                        text="{i18n>travel_id}" />
+                        text="{i18n>charging_period_id}" />
                 </Column>
                 <Column>
                     <Text 
@@ -24,15 +24,7 @@
                 <Column>
                     <Text 
                         text="{i18n>event_end_datetime}" />
-                </Column>
-                <Column>
-                    <Text 
-                        text="{i18n>travel_distance}" />
-                </Column>     
-                <Column>
-                    <Text 
-                        text="{i18n>travel_battery_consumption}" />
-                </Column>                                     
+                </Column>                         
             </columns>
             <items>
                 <ColumnListItem>
@@ -44,11 +36,7 @@
                         <Text 
                             text="{ws_data>start_datetime}"/>                            
                         <Text 
-                            text="{ws_data>end_datetime}"/>                            
-                        <Text 
-                            text="{ws_data>distance}"/>                 
-                        <Text 
-                            text="{ws_data>battery_consumption}"/>                                       
+                            text="{ws_data>end_datetime}"/>                                                        
                     </cells>
                 </ColumnListItem>
             </items>
