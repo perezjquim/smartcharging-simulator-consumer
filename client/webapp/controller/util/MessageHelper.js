@@ -1,62 +1,65 @@
-sap.ui.define(["sap/ui/base/Object"], function(Object)
-{
-        return Object.extend("com.perezjquim.energysim.client.controller.util.MessageHelper",
+sap.ui.define([
+        "sap/ui/base/Object"
+        ], function(Object)
         {
-                _oController: null,
-                MESSAGE_TYPES:
+                "use strict";
+                return Object.extend("com.perezjquim.energysim.client.controller.util.MessageHelper",
                 {
-                        LOG: 'log',
-                        STATE: 'state',
-                        DATA: 'data'
-                },
-                constructor: function(oController)
-                {
-                        this._oController = oController;
-                },
-                parse: function(sMessage)
-                {
-                        const oMessage = JSON.parse(sMessage);
-                        const sMessageType = oMessage['message_type'];
-                        const sMessageValue = oMessage['message_value'];
-                        switch (sMessageType)
+                        _oController: null,
+                        MESSAGE_TYPES:
                         {
-                                case this.MESSAGE_TYPES.STATE:
-                                this._storeState(sMessageValue);
-                                break;
+                                LOG: 'log',
+                                STATE: 'state',
+                                DATA: 'data'
+                        },
+                        constructor: function(oController)
+                        {
+                                this._oController = oController;
+                        },
+                        parse: function(sMessage)
+                        {
+                                const oMessage = JSON.parse(sMessage);
+                                const sMessageType = oMessage['message_type'];
+                                const sMessageValue = oMessage['message_value'];
+                                switch (sMessageType)
+                                {
+                                        case this.MESSAGE_TYPES.STATE:
+                                        this._storeState(sMessageValue);
+                                        break;
 
-                                case this.MESSAGE_TYPES.LOG:
-                                this._storeLog(sMessageValue);
-                                break;
+                                        case this.MESSAGE_TYPES.LOG:
+                                        this._storeLog(sMessageValue);
+                                        break;
 
-                                case this.MESSAGE_TYPES.DATA:
-                                this._storeData(sMessageValue);
-                                break;                                
-                        }
-                },
-                _storeState: function(oData)
-                {
-                        const oModel = this._oController.getModel("ws_state");       
-                        oModel.setProperty("/is_sim_running", oData.is_sim_running);
-                },               
-                _storeLog: function(sMessageValue)
-                {
-                        const oLogsModel = this._oController.getModel("ws_logs");
-                        const sOldData = oLogsModel.getData();
-                        var sNewData = sOldData;                                        
-                        if(sOldData.length > 0)
+                                        case this.MESSAGE_TYPES.DATA:
+                                        this._storeData(sMessageValue);
+                                        break;                                
+                                }
+                        },
+                        _storeState: function(oData)
                         {
-                                sNewData += `\n${sMessageValue}`;
-                        }
-                        else
+                                const oModel = this._oController.getModel("ws_state");       
+                                oModel.setProperty("/is_sim_running", oData.is_sim_running);
+                        },               
+                        _storeLog: function(sMessageValue)
                         {
-                                sNewData = sMessageValue;
+                                const oLogsModel = this._oController.getModel("ws_logs");
+                                const sOldData = oLogsModel.getData();
+                                var sNewData = sOldData;                                        
+                                if(sOldData.length > 0)
+                                {
+                                        sNewData += `\n${sMessageValue}`;
+                                }
+                                else
+                                {
+                                        sNewData = sMessageValue;
+                                }
+                                oLogsModel.setData(sNewData);
+                        },
+                        _storeData: function(oData)
+                        {
+                                const oModel = this._oController.getModel("ws_data");       
+                                oModel.setData(oData);
                         }
-                        oLogsModel.setData(sNewData);
-                },
-                _storeData: function(oData)
-                {
-                        const oModel = this._oController.getModel("ws_data");       
-                        oModel.setData(oData);
-                }
+                });
         });
-});

@@ -4,7 +4,8 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
-    xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:util="com.perezjquim.energysim.client.controller.util">
     <Page 
     	title="{i18n>Home}">
         <f:SimpleForm 
@@ -42,6 +43,6 @@
                 	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
             </f:content>
         </f:SimpleForm>
-        <core:HTML afterRendering="onChartInit" content="&lt;div/&gt;"/>
+        <util:GoogleChart/>
     </Page>
 </mvc:View>
