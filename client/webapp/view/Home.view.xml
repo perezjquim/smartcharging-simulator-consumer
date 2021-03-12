@@ -42,5 +42,6 @@
                 	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
             </f:content>
         </f:SimpleForm>
+        <core:HTML afterRendering="onChartInit" content="&lt;div/&gt;"/>
     </Page>
 </mvc:View>

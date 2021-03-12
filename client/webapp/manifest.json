@@ -70,6 +70,9 @@
                         }
                 },
                 "resources": {
+                        "js": [{
+                                "uri": "libs/google_charts/loader.js"
+                        }],
                         "css": [{
                                 "uri": "css/style.css"
                         }]
