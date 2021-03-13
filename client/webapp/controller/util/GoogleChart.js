@@ -7,19 +7,17 @@ sap.ui.define([
             metadata : {
                 properties : {
                     chartType : { type : "string" },
-                    columns :  { type : "string[]" },
-                    rows: { type : "string[]" },
-                    options : { type : "object" },
-                    data : { type : "any[]" }
+                    chartData :  { type : "object" },
+                    chartOptions : { type : "object" }
                 },
                 aggregations : {
-                   control : { type : "sap.ui.core.HTML", multiple: false }
-               }        
-           },
+                 control : { type : "sap.ui.core.HTML", multiple: false }
+             }        
+         },
 
-           _oLoading: null,            
+         _oLoading: null,            
 
-           init : function () {
+         init : function () {
             const oHTMLControl = new HTML({
                 content: "<div/>",
                 afterRendering: this._onChartInit.bind(this)
@@ -39,24 +37,33 @@ sap.ui.define([
             this._oLoading.then(function()
             {
                 const oDomRef = oSource.getDomRef();
+
+                const oChartData = this.getChartData();
+                const oColumns = oChartData.columns;
+                const oRows = oChartData.rows;        
+
                 const oDataTable = new google.visualization.DataTable();
-                oDataTable.addColumn('string', 'Topping');
-                oDataTable.addColumn('number', 'Slices');
-                oDataTable.addRows([
-                    ['Mushrooms', 3],
-                    ['Onions', 1],
-                    ['Olives', 1],
-                    ['Zucchini', 1],
-                    ['Pepperoni', 2]
-                    ]);
 
-                const oChartOptions = {
-                    'title': 'How Much Pizza I Ate Last Night',
-                    'width': 400,
-                    'height': 300
-                };
+                if(oColumns && oColumns.length > 0)
+                {
+                    oColumns.forEach(function(oColumn)
+                    {
+                        const sColumnType = oColumn[ 'column_type' ];
+                        const sColumnLabel = oColumn[ 'column_label' ];
+                        oDataTable.addColumn(sColumnType, sColumnLabel);
+                    });
+                }
 
-                const oChart = new google.visualization.PieChart(oDomRef);
+                if(oRows && oRows.length > 0)
+                {
+                    oDataTable.addRows(oRows);
+                }
+
+                const oChartOptions = this.getChartOptions();
+
+                const sChartType = this.getChartType();
+
+                const oChart = new google.visualization[sChartType](oDomRef);
                 oChart.draw(oDataTable, oChartOptions);
             }.bind(this));                        
         },
