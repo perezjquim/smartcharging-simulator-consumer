@@ -44,10 +44,7 @@
             </f:content>
         </f:SimpleForm>
         <util:GoogleChart 
-            chartData="{
-                columns: [ { column_type: 'string', column_label: 'Task' }, { column_type: 'number', column_label: 'Hours per Day' } ],
-                rows: [ [ 'Work', 11 ], [ 'Eat', 2 ], [ 'Watch TV', 4 ] ]
-            }" 
+            chartData="{ws_data>/home_stats}" 
             chartOptions="{
                 title: 'How Much Pizza I Ate Last Night',
                 width: 400,

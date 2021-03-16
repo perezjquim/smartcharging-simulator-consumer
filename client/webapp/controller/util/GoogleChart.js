@@ -48,8 +48,8 @@ sap.ui.define([
                 {
                     oColumns.forEach(function(oColumn)
                     {
-                        const sColumnType = oColumn[ 'column_type' ];
-                        const sColumnLabel = oColumn[ 'column_label' ];
+                        const sColumnType = oColumn[ 'type' ];
+                        const sColumnLabel = oColumn[ 'label' ];
                         oDataTable.addColumn(sColumnType, sColumnLabel);
                     });
                 }
@@ -71,6 +71,7 @@ sap.ui.define([
         renderer : function (oRM, oControl) {
             oRM.write("<div");
             oRM.writeControlData(oControl);
+            oRM.addClass("z_googlechart");
             oRM.writeClasses();
             oRM.write(">")
             oRM.renderControl(oControl.getAggregation("control"));
