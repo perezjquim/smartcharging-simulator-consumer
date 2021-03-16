@@ -1,63 +1,61 @@
 sap.ui.define([
-        "./util/BaseController",
-        "sap/ui/core/ValueState"
-        ], function(BaseController,ValueState)
-        {
-                "use strict";
-                return BaseController.extend("com.perezjquim.energysim.client.controller.Cars",
-                {
-                        formatBatteryLevelText: function(iBatteryLevel)
-                        {
-                                const iPercentage = ( iBatteryLevel / 10 ) * 100;
-                                return `${iPercentage}% (${iBatteryLevel} / 10)`;
-                        },                
-                        formatBatteryLevelState: function(iBatteryLevel)
-                        {
-                              switch(true)
-                              {
-                                     case iBatteryLevel < 3:
-                                     return ValueState.Error;
-                                     case iBatteryLevel < 10:
-                                     return ValueState.None;
-                                     case iBatteryLevel == 10:
-                                     return ValueState.Success;
-                             }
-                     },                
-                     formatCarStatus: function(bIsCharging, bIsTraveling)
-                     {
-                      switch(true)
-                      {
-                             case bIsCharging:
-                             return ValueState.Success;
-                             case bIsTraveling:
-                             return ValueState.Warning;
-                             default:
-                             return ValueState.None;
-                     }
-             },
-             formatCarStatusText: function(bIsCharging, bIsTraveling)
-             {
-              switch(true)
-              {
-                     case bIsCharging:
-                     return this.getText("car_is_charging");
-                     case bIsTraveling:
-                     return this.getText("car_is_traveling");
-                     default:
-                     return this.getText("car_is_ready_to_travel");
-             }
-     },
-     formatCarStatusIcon: function(bIsCharging, bIsTraveling)
-     {
-      switch(true)
-      {
-             case bIsCharging:
-             return "sap-icon://connected";
-             case bIsTraveling:
-             return "sap-icon://busy";
-             default:
-             return "sap-icon://status-inactive";
-     }
-}
+  "./util/base/BaseController",
+  "sap/ui/core/ValueState",
+  "./util/car/CarStatuses"
+], function(BaseController, ValueState, CarStatuses) {
+  "use strict";
+  return BaseController.extend("com.perezjquim.energysim.client.controller.Cars", {
+    formatBatteryLevelText: function(iBatteryLevel) {
+      const iPercentage = (iBatteryLevel / 10) * 100;
+      return `${iPercentage}% (${iBatteryLevel} / 10)`;
+    },
+    formatBatteryLevelState: function(iBatteryLevel) {
+      switch (true) {
+        case iBatteryLevel < 3:
+          return ValueState.Error;
+        case iBatteryLevel < 10:
+          return ValueState.None;
+        case iBatteryLevel == 10:
+          return ValueState.Success;
+      }
+    },
+    formatCarStatus: function(sStatus) {
+      switch (sStatus) {
+        case CarStatuses.STATUS_CHARGING:
+          return ValueState.Success;
+        case CarStatuses.STATUS_TRAVELING:
+          return ValueState.Warning;
+        case CarStatuses.STATUS_WAITING_TO_CHARGE:
+        case CarStatuses.STATUS_READY:
+        default:
+          return ValueState.None;
+      }
+    },
+    formatCarStatusText: function(sStatus) {
+      switch (sStatus) {
+        case CarStatuses.STATUS_CHARGING:
+          return this.getText("car_is_charging");
+        case CarStatuses.STATUS_TRAVELING:
+          return this.getText("car_is_traveling");
+        case CarStatuses.STATUS_WAITING_TO_CHARGE:
+          return this.getText("car_is_waiting_to_charge");
+        case CarStatuses.STATUS_READY:
+          return this.getText("car_is_ready");
+        default:
+          return "?";
+      }
+    },
+    formatCarStatusIcon: function(sStatus) {
+      switch (sStatus) {
+        case CarStatuses.STATUS_CHARGING:
+          return "sap-icon://connected";
+        case CarStatuses.STATUS_TRAVELING:
+          return "sap-icon://busy";
+        case CarStatuses.STATUS_WAITING_TO_CHARGE:
+        case CarStatuses.STATUS_READY:
+        default:
+          return "sap-icon://status-inactive";
+      }
+    }
+  });
 });
-        });

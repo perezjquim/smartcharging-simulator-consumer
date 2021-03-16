@@ -5,7 +5,7 @@
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:util="com.perezjquim.energysim.client.controller.util">
+    xmlns:stats="com.perezjquim.energysim.client.controller.util.stats">
     <Page 
     	title="{i18n>Home}">
         <f:SimpleForm 
@@ -43,19 +43,13 @@
                 	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
             </f:content>
         </f:SimpleForm>
-        <util:GoogleChart 
-            chartData="{ws_data>/home_stats}" 
-            chartOptions="{
-                title: 'How Much Pizza I Ate Last Night',
+        <stats:GoogleChart 
+            chartData="{ws_data>/home_stats}"
+            chartTitle="{i18n>home_stats}"
+            chartOptions="{             
                 width: 400,
                 height: 300
             }"
             chartType="PieChart"/>
-                        <!--rows=""
-            options="\{
-                    'title': 'How Much Pizza I Ate Last Night',
-                    'width': 400,
-                    'height': 300
-                \}" -->
     </Page>
 </mvc:View>

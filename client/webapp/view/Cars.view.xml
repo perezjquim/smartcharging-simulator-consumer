@@ -33,9 +33,9 @@
                         <Text 
                         	text="{ws_data>id}"/>
                         <ObjectStatus
-				            text="{ parts: [ 'ws_data>is_charging', 'ws_data>is_traveling' ], formatter: '.formatCarStatusText' }"
-				            icon="{ parts: [ 'ws_data>is_charging', 'ws_data>is_traveling' ], formatter: '.formatCarStatusIcon' }"
-				            state="{ parts: [ 'ws_data>is_charging', 'ws_data>is_traveling' ], formatter: '.formatCarStatus' }" />
+				            text="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusText' }"
+				            icon="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusIcon' }"
+				            state="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatus' }" />
                         <ProgressIndicator
                             percentValue="{= ( ${ws_data>battery_level} / 10 ) * 100 }"
                             displayValue="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelText' }"
