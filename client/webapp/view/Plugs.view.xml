@@ -12,15 +12,15 @@
             <columns>
                 <Column>
                     <Text 
-                        text="{i18n>travel_id}" />
+                        text="{i18n>plug_id}" />
                 </Column>
                 <Column>
                     <Text 
-                        text="{i18n>car_id}" />
+                        text="{i18n>plug_plugged_car_id}" />
                 </Column>
                 <Column>
                     <Text 
-                        text="{i18n>travel_battery_consumption}" />
+                        text="{i18n>plug_energy_consumption}" />
                 </Column>                                     
             </columns>
             <items>
@@ -29,9 +29,9 @@
                         <Text 
                             text="{ws_data>id}"/>
                         <Text 
-                            text="{ws_data>plugged_car_id}"/>                    
+                            text="{= ${ws_data>plugged_car_id} ? ${ws_data>plugged_car_id} : '-' }"/>                    
                         <Text 
-                            text="{ws_data>energy_consumption}"/>                                       
+                            text="{ws_data>energy_consumption} MW"/>                                       
                     </cells>
                 </ColumnListItem>
             </items>

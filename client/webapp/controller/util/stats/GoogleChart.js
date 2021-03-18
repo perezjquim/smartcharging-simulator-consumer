@@ -27,7 +27,7 @@ sap.ui.define([
             }
         },
 
-        _oLoading: null,
+        _oLoadingPromise: null,
 
         init: function() {
             const oHTMLControl = new HTML({
@@ -41,38 +41,51 @@ sap.ui.define([
         _onChartInit: function(oEvent) {
             const oSource = oEvent.getSource();
 
-            if (!this._oLoading) {
-                this._oLoading = google.charts.load('current', {
+            if (!this._oLoadingPromise) {
+                this._oLoadingPromise = google.charts.load('current', {
                     'packages': ['corechart']
                 });
             }
 
-            this._oLoading.then(function() {
+            this._oLoadingPromise.then(function() {
                 const oDomRef = oSource.getDomRef();
-
-                const oChartData = this.getChartData();
-                const oColumns = oChartData.columns;
-                const oRows = oChartData.rows;
 
                 const oDataTable = new google.visualization.DataTable();
 
+                const oChartData = this.getChartData() || {};
+
+                const oColumns = oChartData.columns;
+                const oRows = oChartData.rows;
+
+                const oDateColumns = [];
                 if (oColumns && oColumns.length > 0) {
-                    oColumns.forEach(function(oColumn) {
+                    oColumns.forEach(function(oColumn, iIndex) {
                         const sColumnType = oColumn['type'];
                         const sColumnLabel = oColumn['label'];
                         oDataTable.addColumn(sColumnType, sColumnLabel);
+
+                        if (sColumnType == 'date') {
+                            oDateColumns.push(iIndex);
+                        }
                     });
                 }
 
                 if (oRows && oRows.length > 0) {
+                    if (oDateColumns.length > 0) {
+                        oRows.forEach(function(oRow) {
+                            oDateColumns.forEach(function(iDateColumnIndex) {
+                                oRow[iDateColumnIndex] = new Date(oRow[iDateColumnIndex]);
+                            });
+                        });
+                    }
                     oDataTable.addRows(oRows);
                 }
 
-                const oChartOptions = this.getChartOptions();
+                const oChartOptions = this.getChartOptions() || {};
                 const sChartTitle = this.getChartTitle();
                 oChartOptions['title'] = oChartOptions['title'] || sChartTitle;
 
-                const sChartType = this.getChartType();
+                const sChartType = this.getChartType() || "PieChart";
 
                 const oChart = new google.visualization[sChartType](oDomRef);
                 oChart.draw(oDataTable, oChartOptions);

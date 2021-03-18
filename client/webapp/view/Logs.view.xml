@@ -11,7 +11,7 @@
         <TextArea 
         	editable="false" 
         	width="100%" 
-        	height="40vh" 
-        	value="{ws_logs>/}"/>
+        	height="70vh" 
+        	value="{= ${ws_logs>/}.length &gt; 0 ? ${ws_logs>/} : '' }"/>
     </Page>
 </mvc:View>
