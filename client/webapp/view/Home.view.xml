@@ -47,8 +47,8 @@
             chartData="{ws_data>/home_stats}"
             chartTitle="{i18n>home_stats}"
             chartOptions="{             
-                width: 400,
-                height: 300
+                width: '100vw',
+                height: '100vh'
             }"
             chartType="PieChart"/>
     </Page>
