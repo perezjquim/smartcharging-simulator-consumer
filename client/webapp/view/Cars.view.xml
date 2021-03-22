@@ -38,12 +38,13 @@
 				            icon="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusIcon' }"
 				            state="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatus' }" />
                         <ProgressIndicator
+                            displayAnimation="false"
                             percentValue="{= ( ${ws_data>battery_level} / 10 ) * 100 }"
                             displayValue="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelText' }"
                             state="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelState' }"
                             showValue="true" />
                         <Text 
-                        	text="{ws_data>plug_consumption}"/>
+                        	text="{ws_data>plug_consumption} KW"/>
                     </cells>
                 </ColumnListItem>
             </items>

@@ -84,11 +84,14 @@ sap.ui.define([
                 const oChartOptions = this.getChartOptions() || {};
                 const sChartTitle = this.getChartTitle();
                 oChartOptions['title'] = oChartOptions['title'] || sChartTitle;
+                oChartOptions['async'] = oChartOptions['async'] || true;
 
                 const sChartType = this.getChartType() || "PieChart";
 
                 const oChart = new google.visualization[sChartType](oDomRef);
-                oChart.draw(oDataTable, oChartOptions);
+                setTimeout(function() {
+                    oChart.draw(oDataTable, oChartOptions);
+                });
             }.bind(this));
         },
 

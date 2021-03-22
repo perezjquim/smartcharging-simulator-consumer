@@ -32,7 +32,7 @@
                         <Text 
                             text="{= ${ws_data>plugged_car_id} ? ${ws_data>plugged_car_id} : '-' }"/>                    
                         <Text 
-                            text="{ws_data>energy_consumption} MW"/>                                       
+                            text="{ws_data>energy_consumption} KW"/>                                       
                     </cells>
                 </ColumnListItem>
             </items>
