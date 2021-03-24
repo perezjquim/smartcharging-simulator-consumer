@@ -1,93 +1,69 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-	xmlns:uxap="sap.uxap"
-	xmlns:layout="sap.ui.layout"
-	xmlns="sap.m"
-	controllerName="com.perezjquim.energysim.client.controller.PlugsDetail"
-	height="100%">
-	<uxap:ObjectPageLayout
-		showTitleInHeaderContent="true"
-		showEditHeaderButton="true"
-		editHeaderButtonPress="handleEditBtnPress"
-		upperCaseAnchorBar="false">
-		<uxap:headerTitle>
-			<uxap:ObjectPageDynamicHeaderTitle>
-				<uxap:breadcrumbs>
-					<Breadcrumbs id="breadcrumbsId" currentLocationText="Object Page Example" >
-						<Link text="Page 1 a very long link" press="handleLink1Press"/>
-						<Link text="Page 2 long link" press="handleLink2Press"/>
-					</Breadcrumbs>
-				</uxap:breadcrumbs>
-
-				<uxap:expandedHeading>
-					<HBox>
-						<Title text="Denise Smith" wrapping="true"/>
-						<ObjectMarker type="Favorite" class="sapUiTinyMarginBegin"/>
-					</HBox>
-				</uxap:expandedHeading>
-
-				<uxap:snappedHeading>
-					<FlexBox  fitContainer="true" alignItems="Center">
-						<Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/>
-						<Title text="Denise Smith" wrapping="true"/>
-					</FlexBox>
-				</uxap:snappedHeading>
-
-				<uxap:expandedContent>
-					<Text text="Senior UI Developer"/>
-				</uxap:expandedContent>
-
-				<uxap:snappedContent>
-					<Text text="Senior UI Developer"/>
-				</uxap:snappedContent>
-
-				<uxap:actions>
-					<OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"/>
-					<OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>
-					<OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>
-					<Button text="Toggle Footer" press="toggleFooter"/>
-				</uxap:actions>
-			</uxap:ObjectPageDynamicHeaderTitle>
-		</uxap:headerTitle>
-
-		<uxap:headerContent>
-			<FlexBox wrap="Wrap">
-				<Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png"  displaySize="L" />
-
-					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-						<Link text="+33 6 4512 5158"/>
-						<Link text="DeniseSmith@sap.com"/>
-					</layout:VerticalLayout>
-
-					<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
-						<Image src="./test-resources/sap/uxap/images/linkedin.png"/>
-						<Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/>
-					</layout:HorizontalLayout>
-
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<Label text="Hello! I am Denise and I use UxAP"/>
-					<VBox>
-						<Label text="Achieved goals"/>
-						<ProgressIndicator percentValue="30" displayValue="30%"/>
-					</VBox>
-				</layout:VerticalLayout>
-
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<Label text="San Jose, USA"/>
-				</layout:VerticalLayout>
-			</FlexBox>
-		</uxap:headerContent>
-
-		<uxap:sections>
-
-			<uxap:ObjectPageSection titleUppercase="false" id="personalSection" title="Personal" importance="Medium">
-				<uxap:subSections>
-					<uxap:ObjectPageSubSection id="personalSectionSS1" title="Connect" titleUppercase="false">
-						<uxap:blocks>
-							<Text text="charging cenas"/>
-						</uxap:blocks>
-					</uxap:ObjectPageSubSection>
-				</uxap:subSections>
-			</uxap:ObjectPageSection>			
-		</uxap:sections>
-	</uxap:ObjectPageLayout>
+<mvc:View 
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:uxap="sap.uxap"
+   xmlns:layout="sap.ui.layout"
+   xmlns="sap.m"
+   controllerName="com.perezjquim.energysim.client.controller.PlugsDetail">
+   <uxap:ObjectPageLayout>
+      <uxap:headerContent>
+         <uxap:ObjectPageHeaderContent class="z_objectpageheadercontent">
+            <uxap:content>
+               <Avatar src="sap-icon://connected" displaySize="M" backgroundColor="Accent8"/>
+               <Title text="{i18n>plug_id}{ws_data>id}"/>
+               <layout:VerticalLayout>
+                  <Label text="{i18n>plug_plugged_car_id}"/>
+                  <Link 
+                     text="{ws_data>plugged_car_id}"
+                     active="{= !!${ws_data>plugged_car_id} }"
+                     href="{ parts: [ 'ws_data>plugged_car_id' ], formatter: '.formatCarHref' }"/>
+               </layout:VerticalLayout>               
+               <layout:VerticalLayout>
+                  <Label text="{i18n>plug_energy_consumption}"/>
+                  <Text 
+                     text="{ws_data>energy_consumption} KW"/>
+               </layout:VerticalLayout>
+            </uxap:content>
+         </uxap:ObjectPageHeaderContent>
+      </uxap:headerContent>
+      <uxap:sections>
+         <uxap:ObjectPageSection titleUppercase="false" title="{i18n>ChargingPeriods}">
+            <uxap:subSections>
+               <uxap:ObjectPageSubSection>
+                  <uxap:blocks>
+                     <Table 
+                        items="{ws_data>charging_periods}"
+                        fixedLayout="false">
+                        <columns>
+                           <Column>
+                              <Text 
+                                 text="{i18n>charging_period_id}" />
+                           </Column>
+                           <Column>
+                              <Text 
+                                 text="{i18n>event_start_datetime}" />
+                           </Column>
+                           <Column>
+                              <Text 
+                                 text="{i18n>event_end_datetime}" />
+                           </Column>
+                        </columns>
+                        <items>
+                           <ColumnListItem>
+                              <cells>
+                                 <Text 
+                                    text="{ws_data>id}"/>
+                                 <Text 
+                                    text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>
+                                 <Text 
+                                    text="{ parts: [ 'ws_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>
+                              </cells>
+                           </ColumnListItem>
+                        </items>
+                     </Table>
+                  </uxap:blocks>
+               </uxap:ObjectPageSubSection>
+            </uxap:subSections>
+         </uxap:ObjectPageSection>
+      </uxap:sections>
+   </uxap:ObjectPageLayout>
 </mvc:View>

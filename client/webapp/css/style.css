@@ -2,3 +2,7 @@
 {
 	opacity: 0;
 }
+.z_objectpageheadercontent
+{
+   	box-shadow: none !important;
+}

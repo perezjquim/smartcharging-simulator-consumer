@@ -1,8 +1,8 @@
 sap.ui.define([
-	"./util/car/CarEventController"
-], function(CarEventController) {
+	"./util/base/BaseController"
+], function(BaseController) {
 	"use strict";
-	return CarEventController.extend("com.perezjquim.energysim.client.controller.Travels", {
+	return BaseController.extend("com.perezjquim.energysim.client.controller.Travels", {
 
 	});
 });

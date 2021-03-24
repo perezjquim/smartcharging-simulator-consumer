@@ -32,8 +32,10 @@
                     <cells>
                         <Text 
                             text="{ws_data>id}"/>
-                        <Text 
-                            text="{ws_data>car_id}"/>
+                        <Link 
+                         text="{ws_data>car_id}"
+                         active="{= !!${ws_data>car_id} }"
+                         href="{ parts: [ 'ws_data>car_id' ], formatter: '.formatCarHref' }"/>
                         <Text 
                             text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>                            
                         <Text 

@@ -7,7 +7,14 @@ sap.ui.define([
       this.attachPatternMatched("CarsDetail", this._onObjectMatched.bind(this));
     },
     _onObjectMatched: function(oEvent) {
-      console.log(oEvent);
+      const oArguments = oEvent.getParameter("arguments");
+      const iIndex = oArguments.index;
+      const sPath = `/cars/${iIndex}`;
+      const oView = this.getView();
+      oView.bindElement({
+        model: "ws_data",
+        path: sPath
+      });
     }
   });
 });

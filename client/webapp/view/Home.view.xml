@@ -44,14 +44,6 @@
             </f:content>
         </f:SimpleForm>
         <stats:GoogleChart 
-            chartData="{ws_data>/home_stats}"
-            chartTitle="{i18n>home_stats}"
-            chartOptions="{             
-                width: '100vw',
-                height: '100vh'
-            }"
-            chartType="PieChart"/>
-        <stats:GoogleChart 
             chartData="{ws_data>/car_stats}"
             chartTitle="{i18n>cars_stats_battery_linechart}"
             chartOptions="{             

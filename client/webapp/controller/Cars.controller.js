@@ -6,12 +6,17 @@ sap.ui.define([
   "use strict";
   return BaseController.extend("com.perezjquim.energysim.client.controller.Cars", {
     onItemPress: function(oEvent) {
-      const oSource = oEvent.getSource();
-      const oContext = oSource.getBindingContext("ws_data");
-      const sId = oContext.getProperty("id");
+      const oItem = oEvent.getSource();
+      const oTable = oItem.getParent();
+      const oItems = oTable.getItems();
+      const iIndex = oItems.indexOf(oItem);
       this.navTo("CarsDetail", {
-        id: sId
+        index: iIndex
       });
+    },
+    formatBatteryLevelValue: function(iBatteryLevel) {
+      const iPercentValue = ((iBatteryLevel / 10) * 100);
+      return iPercentValue;
     },
     formatBatteryLevelText: function(iBatteryLevel) {
       const iPercentage = (iBatteryLevel / 10) * 100;

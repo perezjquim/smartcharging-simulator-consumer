@@ -7,7 +7,14 @@ sap.ui.define([
 			this.attachPatternMatched("PlugsDetail", this._onObjectMatched.bind(this));
 		},
 		_onObjectMatched: function(oEvent) {
-			console.log(oEvent);
+			const oArguments = oEvent.getParameter("arguments");
+			const iIndex = oArguments.index;
+			const sPath = `/plugs/${iIndex}`;
+			const oView = this.getView();
+			oView.bindElement({
+				model: "ws_data",
+				path: sPath
+			});
 		}
 	});
 });

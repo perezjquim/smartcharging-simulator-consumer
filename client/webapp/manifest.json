@@ -98,7 +98,7 @@
                                 "name": "Cars",
                                 "target": ["Cars"]
                         }, {
-                                "pattern": "Cars/{id}",
+                                "pattern": "Cars/{index}",
                                 "name": "CarsDetail",
                                 "target": ["CarsDetail"]
                         }, {
@@ -106,7 +106,7 @@
                                 "name": "Plugs",
                                 "target": ["Plugs"]
                         }, {
-                                "pattern": "Plugs/{id}",
+                                "pattern": "Plugs/{index}",
                                 "name": "PlugsDetail",
                                 "target": ["PlugsDetail"]
                         }, {
