@@ -29,7 +29,7 @@
                 </Column>
             </columns>
             <items>
-                <ColumnListItem>
+                <ColumnListItem type="Navigation" press="onItemPress">
                     <cells>
                         <Text 
                         	text="{ws_data>id}"/>
@@ -49,13 +49,5 @@
                 </ColumnListItem>
             </items>
         </Table>
-        <stats:GoogleChart 
-            chartData="{ws_data>/car_stats}"
-            chartTitle="{i18n>cars_stats_battery_linechart}"
-            chartOptions="{             
-                width: '100%',
-                height: '100%'
-            }"
-            chartType="LineChart"/>
     </Page>
 </mvc:View>

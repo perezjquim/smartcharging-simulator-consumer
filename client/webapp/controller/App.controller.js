@@ -1,7 +1,8 @@
 sap.ui.define([
 	"./util/base/BaseController",
-	"./util/data/SocketHelper"
-], function(BaseController, SocketHelper) {
+	"./util/data/SocketHelper",
+	"sap/ui/core/routing/History"
+], function(BaseController, SocketHelper, History) {
 	"use strict";
 	return BaseController.extend("com.perezjquim.energysim.client.controller.App", {
 		onInit: function(oEvent) {
@@ -31,6 +32,9 @@ sap.ui.define([
 			const oSelectedItem = oEvent.getParameter("item");
 			const sKey = oSelectedItem.getKey();
 			this.navTo(sKey);
+		},
+		onNavButtonPress: function(oEvent) {
+			this.navBack();
 		}
 	});
 });

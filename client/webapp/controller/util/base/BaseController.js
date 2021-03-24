@@ -1,12 +1,19 @@
 sap.ui.define([
-        "sap/ui/core/mvc/Controller"
-], function(Controller) {
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/core/routing/History"
+], function(Controller, History) {
         "use strict";
         return Controller.extend("com.perezjquim.energysim.client.controller.util.BaseController", {
                 getModel: function(sName) {
                         const oComponent = this.getOwnerComponent();
                         const oModel = oComponent.getModel(sName);
                         return oModel;
+                },
+                attachPatternMatched(sRoute, fFunction) {
+                        const oComponent = this.getOwnerComponent();
+                        const oRouter = oComponent.getRouter();
+                        const oRoute = oRouter.getRoute(sRoute);
+                        oRoute.attachPatternMatched(fFunction);
                 },
                 getConfig: function(sKey) {
                         const oConfigModel = this.getModel("config");
@@ -23,6 +30,16 @@ sap.ui.define([
                         const oBundle = oI18n.getResourceBundle();
                         const sText = oBundle.getText(sKey);
                         return sText;
+                },
+                navBack: function() {
+                        const oHistory = History.getInstance();
+                        const sPreviousHash = oHistory.getPreviousHash();
+
+                        if (sPreviousHash) {
+                                window.history.go(-1);
+                        } else {
+                                this.navTo("Home", true);
+                        }
                 }
         });
 });

@@ -51,5 +51,29 @@
                 height: '100vh'
             }"
             chartType="PieChart"/>
+        <stats:GoogleChart 
+            chartData="{ws_data>/car_stats}"
+            chartTitle="{i18n>cars_stats_battery_linechart}"
+            chartOptions="{             
+                width: '100%',
+                height: '100%'
+            }"
+            chartType="LineChart"/>
+        <stats:GoogleChart 
+            chartData="{ws_data>/plug_stats}"
+            chartTitle="{i18n>plug_stats_energy_linechart}"
+            chartOptions="{             
+                width: '100%',
+                height: '100%'
+            }"
+            chartType="LineChart"/>        
+        <stats:GoogleChart 
+            chartData="{ws_data>/travel_stats}"
+            chartTitle="{i18n>travel_stats_linechart}"
+            chartOptions="{             
+                width: '100%',
+                height: '100%'
+            }"
+            chartType="LineChart"/>                                            
     </Page>
 </mvc:View>

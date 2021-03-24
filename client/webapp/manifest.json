@@ -38,7 +38,9 @@
                         "libs": {
                                 "sap.ui.core": {},
                                 "sap.m": {},
-                                "sap.ui.layout": {}}},
+                                "sap.ui.layout": {}
+                        }
+                },
                 "contentDensities": {
                         "compact": true,
                         "cozy": true
@@ -96,9 +98,17 @@
                                 "name": "Cars",
                                 "target": ["Cars"]
                         }, {
+                                "pattern": "Cars/{id}",
+                                "name": "CarsDetail",
+                                "target": ["CarsDetail"]
+                        }, {
                                 "pattern": "Plugs",
                                 "name": "Plugs",
                                 "target": ["Plugs"]
+                        }, {
+                                "pattern": "Plugs/{id}",
+                                "name": "PlugsDetail",
+                                "target": ["PlugsDetail"]
                         }, {
                                 "pattern": "Travels",
                                 "name": "Travels",
@@ -119,8 +129,14 @@
                                 "Cars": {
                                         "viewName": "Cars"
                                 },
+                                "CarsDetail": {
+                                        "viewName": "CarsDetail"
+                                },
                                 "Plugs": {
                                         "viewName": "Plugs"
+                                },
+                                "PlugsDetail": {
+                                        "viewName": "PlugsDetail"
                                 },
                                 "Travels": {
                                         "viewName": "Travels"
