@@ -27,6 +27,8 @@ sap.ui.define([
             }
         },
 
+        _oChart: null,
+
         _oLoadingPromise: null,
 
         init: function() {
@@ -86,14 +88,17 @@ sap.ui.define([
                     const sChartTitle = this.getChartTitle();
                     oChartOptions['title'] = oChartOptions['title'] || sChartTitle;
                     oChartOptions['async'] = oChartOptions['async'] || true;
+                    oChartOptions['allowAsync'] = oChartOptions['allowAsync'] || true;
 
                     const sChartType = this.getChartType() || "PieChart";
 
-                    const oChart = new google.visualization[sChartType](oDomRef);
-                    setTimeout(function() {
-                        oChart.draw(oDataTable, oChartOptions);
-                    });
+                    if (!this._oChart) {
+                        this._oChart = new google.visualization[sChartType](oDomRef);
+                    }
 
+                    setTimeout(function() {
+                        this._oChart.draw(oDataTable, oChartOptions);
+                    }.bind(this));
                 }
 
             }.bind(this));
