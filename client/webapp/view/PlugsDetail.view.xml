@@ -14,7 +14,7 @@
                   <Label text="{i18n>plug_plugged_car_id}"/>
                   <Link 
                      text="{ws_data>plugged_car_id}"
-                     active="{= !!${ws_data>plugged_car_id} }"
+                     enabled="{= !!${ws_data>plugged_car_id} }"
                      href="{ parts: [ 'ws_data>plugged_car_id' ], formatter: '.formatCarHref' }"/>
                </layout:VerticalLayout>               
                <layout:VerticalLayout>
@@ -38,6 +38,10 @@
                               <Text 
                                  text="{i18n>charging_period_id}" />
                            </Column>
+                            <Column>
+                                <Text 
+                                    text="{i18n>car_id}" />
+                            </Column>                                           
                            <Column>
                               <Text 
                                  text="{i18n>event_start_datetime}" />
@@ -52,6 +56,10 @@
                               <cells>
                                  <Text 
                                     text="{ws_data>id}"/>
+                                 <Link 
+                                     text="{ws_data>car_id}"
+                                     enabled="{= !!${ws_data>car_id} }"
+                                     href="{ parts: [ 'ws_data>car_id' ], formatter: '.formatCarHref' }"/>                                               
                                  <Text 
                                     text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>
                                  <Text 

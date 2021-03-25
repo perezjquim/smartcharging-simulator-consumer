@@ -58,7 +58,9 @@ sap.ui.define([
                 const oRows = oChartData.rows;
 
                 const oDateColumns = [];
-                if (oColumns && oColumns.length > 0) {
+
+                if (oColumns && oColumns.length > 1) {
+
                     oColumns.forEach(function(oColumn, iIndex) {
                         const sColumnType = oColumn['type'];
                         const sColumnLabel = oColumn['label'];
@@ -68,30 +70,32 @@ sap.ui.define([
                             oDateColumns.push(iIndex);
                         }
                     });
-                }
 
-                if (oRows && oRows.length > 0) {
-                    if (oDateColumns.length > 0) {
-                        oRows.forEach(function(oRow) {
-                            oDateColumns.forEach(function(iDateColumnIndex) {
-                                oRow[iDateColumnIndex] = new Date(oRow[iDateColumnIndex]);
+                    if (oRows && oRows.length > 0) {
+                        if (oDateColumns.length > 0) {
+                            oRows.forEach(function(oRow) {
+                                oDateColumns.forEach(function(iDateColumnIndex) {
+                                    oRow[iDateColumnIndex] = new Date(oRow[iDateColumnIndex]);
+                                });
                             });
-                        });
+                        }
+                        oDataTable.addRows(oRows);
                     }
-                    oDataTable.addRows(oRows);
+
+                    const oChartOptions = this.getChartOptions() || {};
+                    const sChartTitle = this.getChartTitle();
+                    oChartOptions['title'] = oChartOptions['title'] || sChartTitle;
+                    oChartOptions['async'] = oChartOptions['async'] || true;
+
+                    const sChartType = this.getChartType() || "PieChart";
+
+                    const oChart = new google.visualization[sChartType](oDomRef);
+                    setTimeout(function() {
+                        oChart.draw(oDataTable, oChartOptions);
+                    });
+
                 }
 
-                const oChartOptions = this.getChartOptions() || {};
-                const sChartTitle = this.getChartTitle();
-                oChartOptions['title'] = oChartOptions['title'] || sChartTitle;
-                oChartOptions['async'] = oChartOptions['async'] || true;
-
-                const sChartType = this.getChartType() || "PieChart";
-
-                const oChart = new google.visualization[sChartType](oDomRef);
-                setTimeout(function() {
-                    oChart.draw(oDataTable, oChartOptions);
-                });
             }.bind(this));
         },
 

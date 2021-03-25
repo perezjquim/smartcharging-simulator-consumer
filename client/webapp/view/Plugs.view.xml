@@ -31,7 +31,7 @@
                             text="{ws_data>id}"/>
                         <Link 
                          text="{ws_data>plugged_car_id}"
-                         active="{= !!${ws_data>plugged_car_id} }"
+                         enabled="{= !!${ws_data>plugged_car_id} }"
                          href="{ parts: [ 'ws_data>plugged_car_id' ], formatter: '.formatCarHref' }"/>
                         <Text 
                             text="{ws_data>energy_consumption} KW"/>                                       

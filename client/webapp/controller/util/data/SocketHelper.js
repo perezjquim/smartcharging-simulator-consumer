@@ -28,9 +28,7 @@ sap.ui.define([
 
                         this._oSocket.attachMessage(function(oEvent) {
                                 const sReceivedMessage = oEvent.getParameter("data");
-                                setTimeout(function() {
-                                        this._oMessageHelper.parse(sReceivedMessage);
-                                }.bind(this));
+                                this._oMessageHelper.parse(sReceivedMessage);
                         }.bind(this));
 
                         this._oSocket.attachClose(function(oEvent) {

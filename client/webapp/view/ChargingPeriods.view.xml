@@ -20,6 +20,10 @@
                 </Column>
                 <Column>
                     <Text 
+                        text="{i18n>plug_id}" />
+                </Column>                
+                <Column>
+                    <Text 
                         text="{i18n>event_start_datetime}" />
                 </Column>
                 <Column>
@@ -34,8 +38,12 @@
                             text="{ws_data>id}"/>
                         <Link 
                          text="{ws_data>car_id}"
-                         active="{= !!${ws_data>car_id} }"
+                         enabled="{= !!${ws_data>car_id} }"
                          href="{ parts: [ 'ws_data>car_id' ], formatter: '.formatCarHref' }"/>
+                        <Link 
+                         text="{ws_data>plug_id}"
+                         enabled="{= !!${ws_data>plug_id} }"
+                         href="{ parts: [ 'ws_data>plug_id' ], formatter: '.formatPlugHref' }"/>                         
                         <Text 
                             text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>                            
                         <Text 

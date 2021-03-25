@@ -49,7 +49,7 @@
                             showValue="true" />
                         <Link 
                             text="{ws_data>plug_id}"
-                            active="{= !!${ws_data>plug_id} }"
+                            enabled="{= !!${ws_data>plug_id} }"
                             href="{ parts: [ 'ws_data>plug_id' ], formatter: '.formatPlugHref' }"/>                            
                         <Text 
                         	text="{ws_data>plug_consumption} KW"/>

@@ -54,21 +54,25 @@ sap.ui.define([
                 formatPlugHref: function(iPlugId) {
                         const oModel = this.getModel("ws_data");
                         const oPlugs = oModel.getProperty("/plugs");
-                        const iIndex = oPlugs.findIndex(function(oPlug) {
-                                return oPlug.id == iPlugId;
-                        });
-                        if (iIndex > -1) {
-                                return `#/Plugs/${iIndex}`;
+                        if (oPlugs && oPlugs.length > 0) {
+                                const iIndex = oPlugs.findIndex(function(oPlug) {
+                                        return oPlug.id == iPlugId;
+                                });
+                                if (iIndex > -1) {
+                                        return `#/Plugs/${iIndex}`;
+                                }
                         }
                 },
                 formatCarHref: function(iCarId) {
                         const oModel = this.getModel("ws_data");
                         const oCars = oModel.getProperty("/cars");
-                        const iIndex = oCars.findIndex(function(oCar) {
-                                return oCar.id == iCarId;
-                        });
-                        if (iIndex > -1) {
-                                return `#/Cars/${iIndex}`;
+                        if (oCars && oCars.length > 0) {
+                                const iIndex = oCars.findIndex(function(oCar) {
+                                        return oCar.id == iCarId;
+                                });
+                                if (iIndex > -1) {
+                                        return `#/Cars/${iIndex}`;
+                                }
                         }
                 }
         });
