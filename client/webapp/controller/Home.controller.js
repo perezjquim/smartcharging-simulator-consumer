@@ -5,9 +5,6 @@ sap.ui.define([
 ], function(BaseController, SocketHelper, ValueState) {
     "use strict";
     return BaseController.extend("com.perezjquim.energysim.client.controller.Home", {
-        onChartInit: function(oEvent) {
-
-        },
         onPressReconnect: function(oEvent) {
             const oButton = oEvent.getSource();
             oButton.setBusy(true);
@@ -15,10 +12,16 @@ sap.ui.define([
             oButton.setBusy(false);
         },
         onPressStart: function(oEvent) {
-            SocketHelper.sendMessage('command', 'START-SIMULATION');
+            SocketHelper.sendMessage('command', {
+                'command_name': 'START-SIMULATION',
+                'command_args': {}
+            });
         },
         onPressStop: function(oEvent) {
-            SocketHelper.sendMessage('command', 'STOP-SIMULATION');
+            SocketHelper.sendMessage('command', {
+                'command_name': 'STOP-SIMULATION',
+                'command_args': {}
+            });
         },
         formatWsStatusIcon: function(bIsConnected) {
             if (bIsConnected) {

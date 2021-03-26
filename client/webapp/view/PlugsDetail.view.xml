@@ -11,6 +11,12 @@
                <Avatar src="sap-icon://connected" displaySize="M" backgroundColor="Accent8"/>
                <Title text="{i18n>plug_id}{ws_data>id}"/>
                <layout:VerticalLayout>
+                  <Label text="{i18n>plug_status}"/>                  
+                  <Switch 
+                     state="{= ${ws_data>status} === 'enabled' }"
+                     change="onTogglePlugStatus"/>
+               </layout:VerticalLayout>
+               <layout:VerticalLayout>
                   <Label text="{i18n>plug_plugged_car_id}"/>
                   <Link 
                      text="{ws_data>plugged_car_id}"

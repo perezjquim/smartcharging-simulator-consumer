@@ -17,6 +17,10 @@
                 </Column>
                 <Column>
                     <Text 
+                        text="{i18n>plug_status}" />
+                </Column>                
+                <Column>
+                    <Text 
                         text="{i18n>plug_plugged_car_id}" />
                 </Column>
                 <Column>
@@ -29,6 +33,9 @@
                     <cells>
                         <Text 
                             text="{ws_data>id}"/>
+                        <Switch 
+                             state="{= ${ws_data>status} === 'enabled' }"
+                             change="onTogglePlugStatus"/>
                         <Link 
                          text="{ws_data>plugged_car_id}"
                          enabled="{= !!${ws_data>plugged_car_id} }"
