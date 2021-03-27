@@ -6,6 +6,14 @@ sap.ui.define([
     return Control.extend("com.perezjquim.energysim.client.controller.util.StatsChart", {
         metadata: {
             properties: {
+                width: {
+                    type: "sap.ui.core.CSSSize",
+                    defaultValue: "100%"
+                },
+                height: {
+                    type: "sap.ui.core.CSSSize",
+                    defaultValue: "auto"
+                },
                 chartTitle: {
                     type: "string"
                 },
@@ -20,7 +28,7 @@ sap.ui.define([
                 }
             },
             aggregations: {
-                control: {
+                canvas: {
                     type: "sap.ui.core.HTML",
                     multiple: false
                 }
@@ -31,12 +39,12 @@ sap.ui.define([
         _oChartConfig: null,
 
         init: function() {
-            const oHTMLControl = new HTML({
-                content: "<canvas/>",
+            const oCanvas = new HTML({
+                content: "<canvas style=\'width:100% ; height:100%\'/>",
                 afterRendering: this._onChartInit.bind(this)
             });
 
-            this.setAggregation("control", oHTMLControl);
+            this.setAggregation("canvas", oCanvas);
         },
 
         _onChartInit: function(oEvent) {
@@ -74,6 +82,7 @@ sap.ui.define([
                     },
                     responsiveAnimationDuration: 0,
                     title: {
+                        display: true,
                         text: sChartTitle
                     },
                     scales: oChartScales
@@ -112,11 +121,18 @@ sap.ui.define([
         },
 
         renderer: function(oRM, oControl) {
+            const sWidth = oControl.getWidth();
+            const sHeight = oControl.getHeight();
+
             oRM.write("<div");
+            oRM.write(` style="width: ${sWidth} ; height: ${sHeight}"`);
             oRM.writeControlData(oControl);
             oRM.writeClasses();
             oRM.write(">")
-            oRM.renderControl(oControl.getAggregation("control"));
+
+            const oCanvas = oControl.getAggregation("canvas");
+            oRM.renderControl(oCanvas);
+
             oRM.write("</div>");
         }
     });

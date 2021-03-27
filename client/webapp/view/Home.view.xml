@@ -48,6 +48,7 @@
             </f:content>
         </f:SimpleForm>
         <stats:StatsChart 
+            height="50vh"            
             chartData="{ws_data>/car_stats}"
             chartTitle="{i18n>cars_stats_battery_linechart}"
             chartScales="{                      
@@ -62,6 +63,7 @@
             }"
             chartType="line"/>
         <stats:StatsChart 
+            height="50vh"            
             chartData="{ws_data>/plug_stats}"
             chartTitle="{i18n>plug_stats_energy_linechart}"
             chartScales="{                      
@@ -75,7 +77,8 @@
                 }]
             }"
             chartType="line"/>      
-        <stats:StatsChart 
+        <stats:StatsChart
+            height="50vh"
             chartData="{ws_data>/travel_stats}"
             chartTitle="{i18n>travel_stats_linechart}"
             chartScales="{                      
