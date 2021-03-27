@@ -32,7 +32,7 @@
                 	   icon="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
                 	   text="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
                 	   state="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatus' }" />
-                    <HBox justifyContent="SpaceAround">
+                    <HBox justifyContent="SpaceBetween">
                     <Button 
                     	icon="sap-icon://play" 
                     	press="onPressStart" 
