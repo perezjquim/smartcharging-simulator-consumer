@@ -13,7 +13,7 @@
             <f:content>
                 <Label 
                 	text="{i18n>ws_connection_state}" />
-                <l:HorizontalLayout>                          
+                <HBox justifyContent="SpaceBetween">                          
                     <ObjectStatus 
                     	icon="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
                     	text="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusText' }" 
@@ -24,14 +24,15 @@
                         text="{i18n>ws_reconnect}"
                         type="Emphasized"
                         blocked="{= ${ws_state>/is_connected} }"/>                    
-                </l:HorizontalLayout>                          
+                </HBox>                          
                 <Label 
                 	text="{i18n>sim_state}" />
-                <l:HorizontalLayout>                    
+                <HBox justifyContent="SpaceBetween">                    
                     <ObjectStatus 
                 	   icon="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
                 	   text="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
                 	   state="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatus' }" />
+                    <HBox justifyContent="SpaceAround">
                     <Button 
                     	icon="sap-icon://play" 
                     	press="onPressStart" 
@@ -44,7 +45,8 @@
                     	text="{i18n>stop_sim}" 
                     	type="Reject" 
                     	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
-                </l:HorizontalLayout>
+                    </HBox>
+                </HBox>
             </f:content>
         </f:SimpleForm>
         <stats:StatsChart 
