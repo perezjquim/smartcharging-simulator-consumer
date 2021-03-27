@@ -13,59 +13,81 @@
             <f:content>
                 <Label 
                 	text="{i18n>ws_connection_state}" />
-                <ObjectStatus 
-                	icon="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
-                	text="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusText' }" 
-                	state="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatus' }" />
-                <Button
-                    icon="sap-icon://synchronize"
-                    press="onPressReconnect"
-                    text="{i18n>ws_reconnect}"
-                    type="Emphasized"
-                    blocked="{= ${ws_state>/is_connected} }"/>                    
+                <l:HorizontalLayout>                          
+                    <ObjectStatus 
+                    	icon="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
+                    	text="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusText' }" 
+                    	state="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatus' }" />
+                    <Button
+                        icon="sap-icon://synchronize"
+                        press="onPressReconnect"
+                        text="{i18n>ws_reconnect}"
+                        type="Emphasized"
+                        blocked="{= ${ws_state>/is_connected} }"/>                    
+                </l:HorizontalLayout>                          
                 <Label 
                 	text="{i18n>sim_state}" />
-                <ObjectStatus 
-                	icon="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
-                	text="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
-                	state="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatus' }" />
-                <Button 
-                	icon="sap-icon://play" 
-                	press="onPressStart" 
-                	text="{i18n>start_sim}" 
-                	type="Accept" 
-                	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"/>
-                <Button
-                	icon="sap-icon://stop" 
-                	press="onPressStop" 
-                	text="{i18n>stop_sim}" 
-                	type="Reject" 
-                	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
+                <l:HorizontalLayout>                    
+                    <ObjectStatus 
+                	   icon="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
+                	   text="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
+                	   state="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatus' }" />
+                    <Button 
+                    	icon="sap-icon://play" 
+                    	press="onPressStart" 
+                    	text="{i18n>start_sim}" 
+                    	type="Accept" 
+                    	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"/>
+                    <Button
+                    	icon="sap-icon://stop" 
+                    	press="onPressStop" 
+                    	text="{i18n>stop_sim}" 
+                    	type="Reject" 
+                    	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
+                </l:HorizontalLayout>
             </f:content>
         </f:SimpleForm>
-        <stats:GoogleChart 
+        <stats:StatsChart 
             chartData="{ws_data>/car_stats}"
             chartTitle="{i18n>cars_stats_battery_linechart}"
-            chartOptions="{             
-                width: '100%',
-                height: '100%'
+            chartScales="{                      
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        tooltipFormat: 'll HH:mm'
+                    }
+                }],
+                yAxes: [{
+                }]
             }"
-            chartType="LineChart"/>
-        <stats:GoogleChart 
+            chartType="line"/>
+        <stats:StatsChart 
             chartData="{ws_data>/plug_stats}"
             chartTitle="{i18n>plug_stats_energy_linechart}"
-            chartOptions="{             
-                width: '100%',
-                height: '100%'
+            chartScales="{                      
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        tooltipFormat: 'll HH:mm'
+                    }
+                }],
+                yAxes: [{
+                }]
             }"
-            chartType="LineChart"/>        
-        <stats:GoogleChart 
+            chartType="line"/>      
+        <stats:StatsChart 
             chartData="{ws_data>/travel_stats}"
             chartTitle="{i18n>travel_stats_linechart}"
-            chartOptions="{             
-                width: '100%',
-                height: '100%'
+            chartScales="{                      
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        tooltipFormat: 'll HH:mm'
+                    }
+                }],
+                yAxes: [{
+                }]
             }"
-            chartType="LineChart"/>                                            
+            chartType="line"/>                     
     </Page>
 </mvc:View>

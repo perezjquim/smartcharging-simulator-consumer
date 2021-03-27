@@ -14,6 +14,8 @@ sap.ui.define([
 			});
 		},
 		onTogglePlugStatus: function(oEvent) {
+			oEvent.preventDefault();
+
 			const oSource = oEvent.getSource();
 			const oContext = oSource.getBindingContext("ws_data");
 
@@ -32,7 +34,7 @@ sap.ui.define([
 			}
 
 			SocketHelper.sendMessage('command', {
-				'command_name': 'SET-PLUG-STATE',
+				'command_name': 'SET-PLUG-STATUS',
 				'command_args': {
 					'plug_id': iPlugId,
 					'plug_new_status': sPlugNewStatus

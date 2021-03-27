@@ -73,7 +73,7 @@
                 },
                 "resources": {
                         "js": [{
-                                "uri": "libs/google_charts/loader.js"
+                                "uri": "libs/chartjs/chartjs.min.js"
                         }],
                         "css": [{
                                 "uri": "css/style.css"
