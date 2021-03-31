@@ -5,12 +5,19 @@
     xmlns:code="sap.ui.codeeditor">
     <Page 
     	title="{i18n>Config}">
+        <Label class="sapUiTinyMargin" text="{i18n>config_user}"/>
         <code:CodeEditor
             type="json"
             blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"
             editable="{= ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} }"
             value="{ws_state>/config}"
-            height="60vh"/>
+            height="40vh"/>
+        <Label class="sapUiTinyMargin" text="{i18n>config_sample}"/>
+        <code:CodeEditor
+            type="json"
+            editable="false"
+            value='\{ "number_of_cars": 10, "number_of_charging_plugs": 4, "sim_sampling_rate": 100, "minutes_per_sim_step": 15, "number_of_steps": 96, "gateway_request_base_url": "http://cont_energysim_gateway:8000/\{}", "enable_debug_mode": false }'
+            height="10vh"/>            
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
