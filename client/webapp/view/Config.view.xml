@@ -8,7 +8,6 @@
         <Label class="sapUiTinyMargin" text="{i18n>config_user}"/>
         <code:CodeEditor
             type="json"
-            blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"
             editable="{= ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} }"
             value="{ws_state>/config}"
             height="40vh"/>
