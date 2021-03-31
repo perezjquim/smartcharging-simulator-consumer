@@ -32,7 +32,11 @@ sap.ui.define([
                 },
                 _storeState: function(oData) {
                         const oModel = this._oController.getModel("ws_state");
+
                         oModel.setProperty("/is_sim_running", oData.is_sim_running);
+
+                        const sConfig = JSON.stringify(oData.config, null, 2);
+                        oModel.setProperty("/config", sConfig);
                 },
                 _storeLog: function(sMessageValue) {
                         const oLogsModel = this._oController.getModel("ws_logs");

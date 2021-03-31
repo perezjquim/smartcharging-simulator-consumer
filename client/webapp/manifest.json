@@ -118,6 +118,10 @@
                                 "name": "ChargingPeriods",
                                 "target": ["ChargingPeriods"]
                         }, {
+                                "pattern": "Config",
+                                "name": "Config",
+                                "target": ["Config"]
+                        }, {
                                 "pattern": "Logs",
                                 "name": "Logs",
                                 "target": ["Logs"]
@@ -143,6 +147,9 @@
                                 },
                                 "ChargingPeriods": {
                                         "viewName": "ChargingPeriods"
+                                },
+                                "Config": {
+                                        "viewName": "Config"
                                 },
                                 "Logs": {
                                         "viewName": "Logs"
