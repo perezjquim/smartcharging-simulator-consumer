@@ -11,7 +11,27 @@ CLIENT_FLASK_PORT=9090
 CLIENT_FLASK_PORT_EXTERNAL=9091:9090
 # < CONSTANTS
 
-main: stop-docker-client run-docker-client
+main: check-dependencies stop-docker-client run-docker-client
+
+check-dependencies:
+	@echo '$(PATTERN_BEGIN) CHECKING DEPENDENCIES...'
+
+	@if ( pip3 list | grep -F pipreqs > /dev/null 2>&1 ) ; then \
+		echo "pipreqs already installed!" ; \
+	else \
+		echo "pipreqs not installed! installing..." && pip3 install pipreqs; \
+	fi	
+
+	@if ( dpkg -l pack-cli > /dev/null 2>&1 ) ; then \
+		echo "pack already installed!" ; \
+	else \
+		echo "pack not installed! please install..."; \
+		exit 1; \
+	fi			
+
+	@bash -c 'source ~/.profile'		
+
+	@echo '$(PATTERN_END) DEPENDENCIES CHECKED!'
 
 # > DOCKER-CLIENT
 run-docker-client: build-docker-client start-docker-client
