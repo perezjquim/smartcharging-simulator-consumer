@@ -12,6 +12,10 @@
         	editable="false">
             <f:content>
                 <Label 
+                    text="{i18n>ws_configured_url}" />
+                <Text
+                    text="{config>/WS_URL}"/>            
+                <Label 
                 	text="{i18n>ws_connection_state}" />
                 <HBox justifyContent="SpaceBetween">                          
                     <ObjectStatus 
