@@ -2,7 +2,7 @@ sap.ui.define([
         "sap/ui/core/mvc/Controller",
         "sap/ui/core/routing/History",
         "sap/ui/core/format/DateFormat",
-        "sap/m/BusyIndicator"
+        "sap/ui/core/BusyIndicator"
 ], function(Controller, History, DateFormat, BusyIndicator) {
         "use strict";
         return Controller.extend("com.perezjquim.energysim.client.controller.util.BaseController", {
