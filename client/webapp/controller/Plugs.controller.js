@@ -17,6 +17,8 @@ sap.ui.define([
 			oEvent.preventDefault();
 
 			const oSource = oEvent.getSource();
+			oSource.setBusy(true);
+
 			const oContext = oSource.getBindingContext("ws_data");
 
 			const iPlugId = oContext.getProperty("id");
@@ -40,6 +42,8 @@ sap.ui.define([
 					'plug_new_status': sPlugNewStatus
 				}
 			});
+
+			oSource.setBusy(false);
 		}
 	});
 });

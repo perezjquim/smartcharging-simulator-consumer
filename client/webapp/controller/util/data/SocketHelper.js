@@ -12,37 +12,46 @@ sap.ui.define([
                         this._oController = oController;
                         this._oMessageHelper = new MessageHelper(this._oController);
 
-                        this.connect();
+                        const oPromise = this.connect();
+                        return oPromise;
                 },
                 connect: function() {
                         const oWsStateModel = this._oController.getModel("ws_state");
                         const sSocketUrl = this._oController.getConfig("WS_URL");
 
-                        this._oSocket = new WebSocket(sSocketUrl);
+                        const oPromise = new Promise(function(resolve, reject) {
 
-                        this._oSocket.attachOpen(function(oEvent) {
-                                this.sendMessage('init', 'Hello Server!');
-                                oWsStateModel.setProperty("/is_connected", true);
-                                MessageToast.show(this._oController.getText("ws_is_connected"));
-                        }.bind(this));
+                                this._oSocket = new WebSocket(sSocketUrl);
 
-                        this._oSocket.attachMessage(function(oEvent) {
-                                const sReceivedMessage = oEvent.getParameter("data");
-                                this._oMessageHelper.parse(sReceivedMessage);
-                        }.bind(this));
+                                this._oSocket.attachOpen(function(oEvent) {
+                                        this.sendMessage('init', 'Hello Server!');
+                                        oWsStateModel.setProperty("/is_connected", true);
+                                        MessageToast.show(this._oController.getText("ws_is_connected"));
+                                        resolve();
+                                }.bind(this));
 
-                        this._oSocket.attachClose(function(oEvent) {
-                                oWsStateModel.setProperty("/is_connected", false);
-                                MessageToast.show(this._oController.getText("ws_is_disconnected"));
-                        }.bind(this));
+                                this._oSocket.attachMessage(function(oEvent) {
+                                        const sReceivedMessage = oEvent.getParameter("data");
+                                        this._oMessageHelper.parse(sReceivedMessage);
+                                }.bind(this));
 
-                        this._oSocket.attachError(function(oEvent) {
-                                oWsStateModel.setProperty("/is_connected", false);
-                                MessageToast.show(this._oController.getText("ws_is_disconnected"));
+                                this._oSocket.attachClose(function(oEvent) {
+                                        oWsStateModel.setProperty("/is_connected", false);
+                                        MessageToast.show(this._oController.getText("ws_is_disconnected"));
+                                        resolve();
+                                }.bind(this));
+
+                                this._oSocket.attachError(function(oEvent) {
+                                        oWsStateModel.setProperty("/is_connected", false);
+                                        MessageToast.show(this._oController.getText("ws_is_disconnected"));
+                                        resolve();
+                                }.bind(this));
+
                         }.bind(this));
                 },
                 reconnect: function() {
-                        this.connect();
+                        const oPromise = this.connect();
+                        return oPromise;
                 },
                 sendMessage: function(sMessageType, sMessageValue) {
                         const oMessage = {
