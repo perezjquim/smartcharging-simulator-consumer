@@ -1,10 +1,18 @@
 sap.ui.define([
         "sap/ui/core/mvc/Controller",
         "sap/ui/core/routing/History",
-        "sap/ui/core/format/DateFormat"
-], function(Controller, History, DateFormat) {
+        "sap/ui/core/format/DateFormat",
+        "sap/m/BusyIndicator"
+], function(Controller, History, DateFormat, BusyIndicator) {
         "use strict";
         return Controller.extend("com.perezjquim.energysim.client.controller.util.BaseController", {
+                setBusy: function(sBusy) {
+                        if (sBusy) {
+                                BusyIndicator.show(0);
+                        } else {
+                                BusyIndicator.hide();
+                        }
+                },
                 getModel: function(sName) {
                         const oComponent = this.getOwnerComponent();
                         const oModel = oComponent.getModel(sName);
