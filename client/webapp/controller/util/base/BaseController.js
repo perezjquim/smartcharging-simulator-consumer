@@ -10,7 +10,9 @@ sap.ui.define([
                         if (bBusy) {
                                 BusyIndicator.show(0);
                         } else {
-                                BusyIndicator.hide();
+                                setTimeout(function() {
+                                        BusyIndicator.hide();
+                                }, 1000);
                         }
                 },
                 getModel: function(sName) {
