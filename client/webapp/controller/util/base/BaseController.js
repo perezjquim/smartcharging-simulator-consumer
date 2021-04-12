@@ -6,8 +6,8 @@ sap.ui.define([
 ], function(Controller, History, DateFormat, BusyIndicator) {
         "use strict";
         return Controller.extend("com.perezjquim.energysim.client.controller.util.BaseController", {
-                setBusy: function(sBusy) {
-                        if (sBusy) {
+                setBusy: function(bBusy) {
+                        if (bBusy) {
                                 BusyIndicator.show(0);
                         } else {
                                 BusyIndicator.hide();

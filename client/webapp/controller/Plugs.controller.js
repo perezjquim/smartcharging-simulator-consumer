@@ -16,9 +16,9 @@ sap.ui.define([
 		onTogglePlugStatus: function(oEvent) {
 			oEvent.preventDefault();
 
-			const oSource = oEvent.getSource();
-			oSource.setBusy(true);
+			this.setBusy(true);
 
+			const oSource = oEvent.getSource();
 			const oContext = oSource.getBindingContext("ws_data");
 
 			const iPlugId = oContext.getProperty("id");
@@ -43,7 +43,7 @@ sap.ui.define([
 				}
 			});
 
-			oSource.setBusy(false);
+			this.setBusy(false);
 		}
 	});
 });

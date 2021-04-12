@@ -5,8 +5,7 @@ sap.ui.define([
 	"use strict";
 	return BaseController.extend("com.perezjquim.energysim.client.controller.Config", {
 		onConfigSave: function(oEvent) {
-			const oSource = oEvent.getSource();
-			oSource.setBusy(true);
+			this.setBusy(true);
 
 			const oModel = this.getModel("ws_state");
 			const oConfig = JSON.parse(oModel.getProperty("/config"));
@@ -17,7 +16,7 @@ sap.ui.define([
 				}
 			});
 
-			oSource.setBusy(false);
+			this.setBusy(false);
 		}
 	});
 });

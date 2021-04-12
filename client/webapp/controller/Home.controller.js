@@ -6,34 +6,31 @@ sap.ui.define([
     "use strict";
     return BaseController.extend("com.perezjquim.energysim.client.controller.Home", {
         onPressReconnect: async function(oEvent) {
-            const oSource = oEvent.getSource();
-            oSource.setBusy(true);
+            this.setBusy(true);
 
             await SocketHelper.reconnect();
 
-            oSource.setBusy(false);
+            this.setBusy(false);
         },
         onPressStart: function(oEvent) {
-            const oSource = oEvent.getSource();
-            oSource.setBusy(true);
+            this.setBusy(true);
 
             SocketHelper.sendMessage('command', {
                 'command_name': 'START-SIMULATION',
                 'command_args': {}
             });
 
-            oSource.setBusy(false);
+            this.setBusy(false);
         },
         onPressStop: function(oEvent) {
-            const oSource = oEvent.getSource();
-            oSource.setBusy(true);
+            this.setBusy(true);
 
             SocketHelper.sendMessage('command', {
                 'command_name': 'STOP-SIMULATION',
                 'command_args': {}
             });
 
-            oSource.setBusy(false);
+            this.setBusy(false);
         },
         formatWsStatusIcon: function(bIsConnected) {
             if (bIsConnected) {
