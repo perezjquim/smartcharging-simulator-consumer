@@ -20,6 +20,9 @@ sap.ui.define([
                 'command_args': {}
             });
 
+            const sText = this.getText("start_sim_toast_msg");
+            this.toast(sText);
+
             this.setBusy(false);
         },
         onPressStop: function(oEvent) {
@@ -29,6 +32,9 @@ sap.ui.define([
                 'command_name': 'STOP-SIMULATION',
                 'command_args': {}
             });
+
+            const sText = this.getText("stop_sim_toast_msg");
+            this.toast(sText);
 
             this.setBusy(false);
         },

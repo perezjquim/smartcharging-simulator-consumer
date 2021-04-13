@@ -80,6 +80,7 @@ sap.ui.define([
                             tension: 0
                         }
                     },
+                    maintainAspectRatio: false,
                     responsiveAnimationDuration: 0,
                     title: {
                         display: true,

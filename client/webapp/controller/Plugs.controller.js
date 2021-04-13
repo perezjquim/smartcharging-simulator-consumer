@@ -43,6 +43,9 @@ sap.ui.define([
 				}
 			});
 
+			const sText = this.getText("plug_status_change_toast_msg");
+			this.toast(sText);
+
 			this.setBusy(false);
 		}
 	});

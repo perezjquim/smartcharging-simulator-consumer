@@ -2,17 +2,19 @@ sap.ui.define([
         "sap/ui/core/mvc/Controller",
         "sap/ui/core/routing/History",
         "sap/ui/core/format/DateFormat",
-        "sap/ui/core/BusyIndicator"
-], function(Controller, History, DateFormat, BusyIndicator) {
+        "sap/ui/core/BusyIndicator",
+        "sap/m/MessageToast"
+], function(Controller, History, DateFormat, BusyIndicator, MessageToast) {
         "use strict";
         return Controller.extend("com.perezjquim.energysim.client.controller.util.BaseController", {
+                toast: function(sText) {
+                        MessageToast.show(sText);
+                },
                 setBusy: function(bBusy) {
                         if (bBusy) {
                                 BusyIndicator.show(0);
                         } else {
-                                setTimeout(function() {
-                                        BusyIndicator.hide();
-                                }, 1000);
+                                BusyIndicator.hide();
                         }
                 },
                 getModel: function(sName) {

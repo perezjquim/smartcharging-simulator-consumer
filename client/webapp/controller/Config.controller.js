@@ -16,6 +16,9 @@ sap.ui.define([
 				}
 			});
 
+			const sText = this.getText("config_save_toast_msg");
+			this.toast(sText);
+
 			this.setBusy(false);
 		}
 	});
