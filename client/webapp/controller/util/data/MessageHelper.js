@@ -35,7 +35,7 @@ sap.ui.define([
 
                         oModel.setProperty("/is_sim_running", oData.is_sim_running);
 
-                        const sConfig = JSON.stringify(oData.config, null, 2);
+                        const sConfig = this._oController.stringifyJSON(oData.config);
                         oModel.setProperty("/config", sConfig);
                 },
                 _storeLog: function(sMessageValue) {

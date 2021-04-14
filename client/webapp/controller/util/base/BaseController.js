@@ -54,6 +54,9 @@ sap.ui.define([
                                 this.navTo("Home", true);
                         }
                 },
+                stringifyJSON: function(oData) {
+                        return JSON.stringify(oData, null, 2);
+                },
                 formatEventDatetime: function(sDatetime) {
                         if (sDatetime) {
                                 const oDate = new Date(sDatetime);
