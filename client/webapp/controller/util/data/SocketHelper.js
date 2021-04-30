@@ -20,7 +20,6 @@ sap.ui.define([
                         const sSocketUrl = this._oController.getConfig("WS_URL");
 
                         const oPromise = new Promise(function(resolve, reject) {
-
                                 this._oSocket = new WebSocket(sSocketUrl);
 
                                 this._oSocket.attachOpen(function(oEvent) {
@@ -36,18 +35,23 @@ sap.ui.define([
                                 }.bind(this));
 
                                 this._oSocket.attachClose(function(oEvent) {
-                                        oWsStateModel.setProperty("/is_connected", false);
+                                        this._cleanupWsStateModel();
                                         MessageToast.show(this._oController.getText("ws_is_disconnected"));
                                         resolve();
                                 }.bind(this));
 
                                 this._oSocket.attachError(function(oEvent) {
-                                        oWsStateModel.setProperty("/is_connected", false);
+                                        this._cleanupWsStateModel();
                                         MessageToast.show(this._oController.getText("ws_is_disconnected"));
                                         resolve();
                                 }.bind(this));
 
                         }.bind(this));
+                },
+                _cleanupWsStateModel: function() {
+                        const oWsStateModel = this._oController.getModel("ws_state");
+                        oWsStateModel.setProperty("/is_connected", false);
+                        oWsStateModel.setProperty("/is_sim_running", false);
                 },
                 reconnect: function() {
                         const oPromise = this.connect();
