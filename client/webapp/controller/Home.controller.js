@@ -38,6 +38,16 @@ sap.ui.define([
 
             this.setBusy(false);
         },
+        onPressExport: function(oEvent) {
+            this.setBusy(true);
+
+            const oConfig = this.getModel("config");
+            const sAPIUrl = oConfig.getProperty("/API_URL");
+            const sExportUrl = `${sAPIUrl}/export`;
+            window.open(sExportUrl);
+
+            this.setBusy(false);
+        },
         formatWsStatusIcon: function(bIsConnected) {
             if (bIsConnected) {
                 return "sap-icon://connected";

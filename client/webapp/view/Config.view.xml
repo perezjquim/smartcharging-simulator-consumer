@@ -15,7 +15,7 @@
         <code:CodeEditor
             type="json"
             editable="false"
-            value="{ path: 'config>/DEFAULT_SIM_CONFIG', formatter: '.stringifyJSON' }"
+            value="{ path: 'config>/SAMPLE_SIM_CONFIG', formatter: '.stringifyJSON' }"
             height="30vh"/>            
         <footer>
             <OverflowToolbar>

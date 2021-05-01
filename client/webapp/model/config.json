@@ -1,6 +1,7 @@
 {
 	"WS_URL": "ws://localhost:9002",
-	"DEFAULT_SIM_CONFIG": {
+	"API_URL": "http://localhost:9001",
+	"SAMPLE_SIM_CONFIG": {
 		"number_of_cars": 10,
 		"number_of_charging_plugs": 4,
 		"sim_sampling_rate": 100,
