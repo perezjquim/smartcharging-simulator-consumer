@@ -12,6 +12,6 @@
         	editable="false" 
         	width="100%" 
         	height="70vh" 
-        	value="{= ${ws_logs>/}.length &gt; 0 ? ${ws_logs>/} : '' }"/>
+        	value="{ path: 'ws_data>/logs', formatter: '.formatLogs' }"/>
     </Page>
 </mvc:View>

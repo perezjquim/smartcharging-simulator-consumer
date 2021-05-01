@@ -5,7 +5,6 @@ sap.ui.define([
         return Object.extend("com.perezjquim.energysim.client.controller.util.MessageHelper", {
                 _oController: null,
                 MESSAGE_TYPES: {
-                        LOG: 'log',
                         STATE: 'state',
                         DATA: 'data'
                 },
@@ -20,11 +19,6 @@ sap.ui.define([
                                 case this.MESSAGE_TYPES.STATE:
                                         this._storeState(sMessageValue);
                                         break;
-
-                                case this.MESSAGE_TYPES.LOG:
-                                        this._storeLog(sMessageValue);
-                                        break;
-
                                 case this.MESSAGE_TYPES.DATA:
                                         this._storeData(sMessageValue);
                                         break;
@@ -37,17 +31,6 @@ sap.ui.define([
 
                         const sConfig = this._oController.stringifyJSON(oData.config);
                         oModel.setProperty("/config", sConfig);
-                },
-                _storeLog: function(sMessageValue) {
-                        const oLogsModel = this._oController.getModel("ws_logs");
-                        const sOldData = oLogsModel.getData();
-                        var sNewData = sOldData;
-                        if (sOldData.length > 0) {
-                                sNewData += `\n${sMessageValue}`;
-                        } else {
-                                sNewData = sMessageValue;
-                        }
-                        oLogsModel.setData(sNewData);
                 },
                 _storeData: function(oData) {
                         const oModel = this._oController.getModel("ws_data");
