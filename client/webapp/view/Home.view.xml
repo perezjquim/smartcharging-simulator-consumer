@@ -58,7 +58,7 @@
                         press="onPressExport"
                         text="{i18n>export}"
                         type="Emphasized"
-                        blocked="{= !( ${ws_state>/is_connected} ) }"/>
+                        blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"/>
                     </HBox>
                 </HBox>
             </f:content>
