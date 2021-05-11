@@ -5,7 +5,7 @@ sap.ui.define([
 ], function(BaseController, SocketHelper, History) {
 	"use strict";
 	return BaseController.extend("com.perezjquim.energysim.client.controller.App", {
-		onInit: function(oEvent) {
+		onInit: async function(oEvent) {
 			SocketHelper.init(this);
 		},
 		onHomeButtonPress: function(oEvent) {

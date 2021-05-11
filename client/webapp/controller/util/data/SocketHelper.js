@@ -8,12 +8,13 @@ sap.ui.define([
                 _oMessageHelper: null,
                 _oSocket: null,
                 _oController: null,
-                init: function(oController) {
+                init: async function(oController) {
                         this._oController = oController;
                         this._oMessageHelper = new MessageHelper(this._oController);
 
-                        const oPromise = this.connect();
-                        return oPromise;
+                        this._oController.setBusy(true);
+                        await this.connect();
+                        this._oController.setBusy(false);
                 },
                 connect: function() {
                         const oWsStateModel = this._oController.getModel("ws_state");
@@ -47,15 +48,18 @@ sap.ui.define([
                                 }.bind(this));
 
                         }.bind(this));
+
+                        return oPromise;
                 },
                 _cleanupWsStateModel: function() {
                         const oWsStateModel = this._oController.getModel("ws_state");
                         oWsStateModel.setProperty("/is_connected", false);
                         oWsStateModel.setProperty("/is_sim_running", false);
                 },
-                reconnect: function() {
-                        const oPromise = this.connect();
-                        return oPromise;
+                reconnect: async function() {
+                        this._oController.setBusy(true);
+                        await this.connect();
+                        this._oController.setBusy(true);
                 },
                 sendMessage: function(sMessageType, sMessageValue) {
                         const oMessage = {
