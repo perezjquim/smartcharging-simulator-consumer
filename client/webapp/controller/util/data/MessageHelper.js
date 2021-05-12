@@ -6,7 +6,8 @@ sap.ui.define([
                 _oController: null,
                 MESSAGE_TYPES: {
                         STATE: 'state',
-                        DATA: 'data'
+                        DATA: 'data',
+                        SIM_LIST: 'sim_list'
                 },
                 constructor: function(oController) {
                         this._oController = oController;
@@ -22,6 +23,9 @@ sap.ui.define([
                                 case this.MESSAGE_TYPES.DATA:
                                         this._storeData(sMessageValue);
                                         break;
+                                case this.MESSAGE_TYPES.SIM_LIST:
+                                        this._storeSimList(sMessageValue);
+                                        break;
                         }
                 },
                 _storeState: function(oData) {
@@ -34,6 +38,10 @@ sap.ui.define([
                 },
                 _storeData: function(oData) {
                         const oModel = this._oController.getModel("ws_data");
+                        oModel.setData(oData);
+                },
+                _storeSimList: function(oData) {
+                        const oModel = this._oController.getModel("ws_sim_list");
                         oModel.setData(oData);
                 }
         });

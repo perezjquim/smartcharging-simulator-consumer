@@ -66,6 +66,9 @@
                         "ws_data": {
                                 "type": "sap.ui.model.json.JSONModel"
                         },
+                        "ws_sim_list": {
+                                "type": "sap.ui.model.json.JSONModel"
+                        },
                         "ws_state": {
                                 "type": "sap.ui.model.json.JSONModel",
                                 "uri": "model/ws_state.json"

@@ -1,8 +1,9 @@
 sap.ui.define([
 	"./util/base/BaseController",
 	"./util/data/SocketHelper",
-	"sap/ui/core/routing/History"
-], function(BaseController, SocketHelper, History) {
+	"sap/ui/core/routing/History",
+	"sap/ui/core/Fragment"
+], function(BaseController, SocketHelper, History, Fragment) {
 	"use strict";
 	return BaseController.extend("com.perezjquim.energysim.client.controller.App", {
 		onInit: async function(oEvent) {
@@ -35,6 +36,23 @@ sap.ui.define([
 		},
 		onNavButtonPress: function(oEvent) {
 			this.navBack();
+		},
+		onProductSwitcherPress: function(oEvent) {
+			const oSource = oEvent.getParameter("button");
+			if (!this._oSimMenu) {
+				const oView = this.getView();
+				Fragment.load({
+					name: "com.perezjquim.energysim.client.view.fragment.SimMenu",
+					controller: this
+				}).then(function(oMenu) {
+					oView.addDependent(oMenu);
+					oMenu.openBy(oSource);
+					this._oSimMenu = oMenu;
+					return oMenu;
+				}.bind(this));
+			} else {
+				this._oSimMenu.openBy(oSource);
+			}
 		}
 	});
 });
