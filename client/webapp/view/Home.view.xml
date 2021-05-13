@@ -23,49 +23,49 @@
                 	text="{i18n>ws_connection_state}" />
                 <HBox justifyContent="SpaceBetween">                          
                     <ObjectStatus 
-                    	icon="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
-                    	text="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatusText' }" 
-                    	state="{ path: 'ws_state>/is_connected', formatter: '.formatWsStatus' }" />
+                    	icon="{ path: 'sim_state>/is_connected', formatter: '.formatWsStatusIcon' }"  
+                    	text="{ path: 'sim_state>/is_connected', formatter: '.formatWsStatusText' }" 
+                    	state="{ path: 'sim_state>/is_connected', formatter: '.formatWsStatus' }" />
                     <Button
                         icon="sap-icon://synchronize"
                         press="onPressReconnect"
                         text="{i18n>ws_reconnect}"
                         type="Emphasized"
-                        blocked="{= ${ws_state>/is_connected} }"/>                    
+                        blocked="{= ${sim_state>/is_connected} }"/>                    
                 </HBox>                          
                 <Label 
                 	text="{i18n>sim_state}" />
                 <HBox justifyContent="SpaceBetween">                    
                     <ObjectStatus 
-                	   icon="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
-                	   text="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
-                	   state="{ path: 'ws_state>/is_sim_running', formatter: '.formatSimStatus' }" />
+                	   icon="{ path: 'sim_state>/is_sim_running', formatter: '.formatSimStatusIcon' }"  
+                	   text="{ path: 'sim_state>/is_sim_running', formatter: '.formatSimStatusText' }" 
+                	   state="{ path: 'sim_state>/is_sim_running', formatter: '.formatSimStatus' }" />
                     <HBox justifyContent="SpaceBetween">
                     <Button 
                     	icon="sap-icon://play" 
                     	press="onPressStart" 
                     	text="{i18n>start_sim}" 
                     	type="Accept" 
-                    	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"/>
+                    	blocked="{= !( ${sim_state>/is_connected} &amp;&amp; !${sim_state>/is_sim_running} ) }"/>
                     <Button
                     	icon="sap-icon://stop" 
                     	press="onPressStop" 
                     	text="{i18n>stop_sim}" 
                     	type="Reject" 
-                    	blocked="{= !( ${ws_state>/is_connected} &amp;&amp; ${ws_state>/is_sim_running} ) }"/>
+                    	blocked="{= !( ${sim_state>/is_connected} &amp;&amp; ${sim_state>/is_sim_running} ) }"/>
                     <Button
                         icon="sap-icon://excel-attachment"
                         press="onPressExport"
                         text="{i18n>export}"
                         type="Emphasized"
-                        blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"/>
+                        blocked="{= !( ${sim_state>/is_connected} &amp;&amp; !${sim_state>/is_sim_running} ) }"/>
                     </HBox>
                 </HBox>
             </f:content>
         </f:SimpleForm>
         <stats:StatsChart 
             height="50vh"            
-            chartData="{ws_data>/car_stats}"
+            chartData="{sim_data>/car_stats}"
             chartTitle="{i18n>cars_stats_battery_linechart}"
             chartScales="{                      
                 xAxes: [{
@@ -80,7 +80,7 @@
             chartType="line"/>
         <stats:StatsChart 
             height="50vh"            
-            chartData="{ws_data>/plug_stats}"
+            chartData="{sim_data>/plug_stats}"
             chartTitle="{i18n>plug_stats_energy_linechart}"
             chartScales="{                      
                 xAxes: [{
@@ -95,7 +95,7 @@
             chartType="line"/>      
         <stats:StatsChart
             height="50vh"
-            chartData="{ws_data>/travel_stats}"
+            chartData="{sim_data>/travel_stats}"
             chartTitle="{i18n>travel_stats_linechart}"
             chartScales="{                      
                 xAxes: [{

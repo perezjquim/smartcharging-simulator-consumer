@@ -17,7 +17,7 @@ sap.ui.define([
                         this._oController.setBusy(false);
                 },
                 connect: function() {
-                        const oWsStateModel = this._oController.getModel("ws_state");
+                        const oSimStateModel = this._oController.getModel("sim_state");
                         const sSocketUrl = this._oController.getConfig("WS_URL");
 
                         const oPromise = new Promise(function(resolve, reject) {
@@ -25,7 +25,7 @@ sap.ui.define([
 
                                 this._oSocket.attachOpen(function(oEvent) {
                                         this.sendMessage('init', 'Hello Server!');
-                                        oWsStateModel.setProperty("/is_connected", true);
+                                        oSimStateModel.setProperty("/is_connected", true);
                                         MessageToast.show(this._oController.getText("ws_is_connected"));
                                         resolve();
                                 }.bind(this));
@@ -52,9 +52,9 @@ sap.ui.define([
                         return oPromise;
                 },
                 _cleanupWsStateModel: function() {
-                        const oWsStateModel = this._oController.getModel("ws_state");
-                        oWsStateModel.setProperty("/is_connected", false);
-                        oWsStateModel.setProperty("/is_sim_running", false);
+                        const oSimStateModel = this._oController.getModel("sim_state");
+                        oSimStateModel.setProperty("/is_connected", false);
+                        oSimStateModel.setProperty("/is_sim_running", false);
                 },
                 reconnect: async function() {
                         this._oController.setBusy(true);

@@ -8,8 +8,8 @@
         <Label class="sapUiTinyMargin" text="{i18n>config_user}"/>
         <code:CodeEditor
             type="json"
-            editable="{= ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} }"
-            value="{ws_state>/config}"
+            editable="{= ${sim_state>/is_connected} &amp;&amp; !${sim_state>/is_sim_running} }"
+            value="{sim_state>/config}"
             height="30vh"/>
         <Label class="sapUiTinyMargin" text="{i18n>config_sample}"/>
         <code:CodeEditor
@@ -22,8 +22,8 @@
                 <ToolbarSpacer/>
                 <Button 
                     type="Emphasized" 
-                    blocked="{= !( ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} ) }"
-                    enabled="{= ${ws_state>/is_connected} &amp;&amp; !${ws_state>/is_sim_running} }"
+                    blocked="{= !( ${sim_state>/is_connected} &amp;&amp; !${sim_state>/is_sim_running} ) }"
+                    enabled="{= ${sim_state>/is_connected} &amp;&amp; !${sim_state>/is_sim_running} }"
                     text="{i18n>config_save}" 
                     press="onConfigSave"/>
             </OverflowToolbar>

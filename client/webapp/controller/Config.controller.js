@@ -7,7 +7,7 @@ sap.ui.define([
 		onConfigSave: function(oEvent) {
 			this.setBusy(true);
 
-			const oModel = this.getModel("ws_state");
+			const oModel = this.getModel("sim_state");
 			const oConfig = JSON.parse(oModel.getProperty("/config"));
 			SocketHelper.sendMessage('command', {
 				'command_name': 'SET-CONFIG',

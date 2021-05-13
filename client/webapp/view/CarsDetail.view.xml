@@ -9,34 +9,34 @@
          <uxap:ObjectPageHeaderContent class="z_objectpageheadercontent">
             <uxap:content>
                <Avatar src="sap-icon://car-rental" displaySize="M" backgroundColor="Accent2"/>
-               <Title text="{i18n>car_id}{ws_data>id}"/>
+               <Title text="{i18n>car_id}{sim_data>id}"/>
                <layout:VerticalLayout>
                   <Label text="{i18n>car_status}"/>
                   <ObjectStatus
-                     text="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusText' }"
-                     icon="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusIcon' }"
-                     state="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatus' }" />
+                     text="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatusText' }"
+                     icon="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatusIcon' }"
+                     state="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatus' }" />
                </layout:VerticalLayout>
                <layout:VerticalLayout>
                   <Label text="{i18n>car_battery_level}"/>
                   <ProgressIndicator
                      displayAnimation="false"
-                     percentValue="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelValue' }"
-                     displayValue="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelText' }"
-                     state="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelState' }"
+                     percentValue="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelValue' }"
+                     displayValue="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelText' }"
+                     state="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelState' }"
                      showValue="true" />
                </layout:VerticalLayout>
                <layout:VerticalLayout>
                   <Label text="{i18n>plug_id}"/>
                   <Link 
-                      text="{ws_data>plug_id}"
-                      enabled="{= !!${ws_data>plug_id} }"
-                      href="{ parts: [ 'ws_data>plug_id' ], formatter: '.formatPlugHref' }"/>        
+                      text="{sim_data>plug_id}"
+                      enabled="{= !!${sim_data>plug_id} }"
+                      href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>        
                </layout:VerticalLayout>                     
                <layout:VerticalLayout>
                   <Label text="{i18n>car_plug_consumption}"/>
                   <Text 
-                     text="{ws_data>plug_consumption} KW"/>
+                     text="{sim_data>plug_consumption} KW"/>
                </layout:VerticalLayout>
             </uxap:content>
          </uxap:ObjectPageHeaderContent>
@@ -47,7 +47,7 @@
                <uxap:ObjectPageSubSection>
                   <uxap:blocks>
                      <Table 
-                        items="{ws_data>travels}"
+                        items="{sim_data>travels}"
                         fixedLayout="false">
                         <columns>
                            <Column>
@@ -75,15 +75,15 @@
                            <ColumnListItem>
                               <cells>
                                  <Text 
-                                    text="{ws_data>id}"/>
+                                    text="{sim_data>id}"/>
                                  <Text 
-                                    text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>
+                                    text="{ parts: [ 'sim_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>
                                  <Text 
-                                    text="{ parts: [ 'ws_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>
+                                    text="{ parts: [ 'sim_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>
                                  <Text 
-                                    text="{ws_data>distance} km"/>
+                                    text="{sim_data>distance} km"/>
                                  <Text 
-                                    text="{ws_data>battery_consumption}"/>
+                                    text="{sim_data>battery_consumption}"/>
                               </cells>
                            </ColumnListItem>
                         </items>
@@ -97,7 +97,7 @@
                <uxap:ObjectPageSubSection>
                   <uxap:blocks>
                      <Table 
-                        items="{ws_data>charging_periods}"
+                        items="{sim_data>charging_periods}"
                         fixedLayout="false">
                         <columns>
                            <Column>
@@ -121,15 +121,15 @@
                            <ColumnListItem>
                               <cells>
                                  <Text 
-                                    text="{ws_data>id}"/>
+                                    text="{sim_data>id}"/>
                                  <Link 
-                                  text="{ws_data>plug_id}"
-                                  enabled="{= !!${ws_data>plug_id} }"
-                                  href="{ parts: [ 'ws_data>plug_id' ], formatter: '.formatPlugHref' }"/>                                               
+                                  text="{sim_data>plug_id}"
+                                  enabled="{= !!${sim_data>plug_id} }"
+                                  href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>                                               
                                  <Text 
-                                    text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>
+                                    text="{ parts: [ 'sim_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>
                                  <Text 
-                                    text="{ parts: [ 'ws_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>
+                                    text="{ parts: [ 'sim_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>
                               </cells>
                            </ColumnListItem>
                         </items>

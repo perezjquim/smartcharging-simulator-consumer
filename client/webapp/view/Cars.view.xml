@@ -8,7 +8,7 @@
     <Page 
     	title="{i18n>Cars}">
         <Table 
-        	items="{ws_data>/cars}"
+        	items="{sim_data>/cars}"
             fixedLayout="false">
             <columns>
                 <Column>
@@ -36,23 +36,23 @@
                 <ColumnListItem type="Navigation" press="onItemPress">
                     <cells>
                         <Text 
-                        	text="{ws_data>id}"/>
+                        	text="{sim_data>id}"/>
                         <ObjectStatus
-				            text="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusText' }"
-				            icon="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatusIcon' }"
-				            state="{ parts: [ 'ws_data>status' ], formatter: '.formatCarStatus' }" />
+				            text="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatusText' }"
+				            icon="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatusIcon' }"
+				            state="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatus' }" />
                         <ProgressIndicator
                             displayAnimation="false"
-                            percentValue="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelValue' }"
-                            displayValue="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelText' }"
-                            state="{ parts: [ 'ws_data>battery_level' ], formatter: '.formatBatteryLevelState' }"
+                            percentValue="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelValue' }"
+                            displayValue="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelText' }"
+                            state="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelState' }"
                             showValue="true" />
                         <Link 
-                            text="{ws_data>plug_id}"
-                            enabled="{= !!${ws_data>plug_id} }"
-                            href="{ parts: [ 'ws_data>plug_id' ], formatter: '.formatPlugHref' }"/>                            
+                            text="{sim_data>plug_id}"
+                            enabled="{= !!${sim_data>plug_id} }"
+                            href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>                            
                         <Text 
-                        	text="{ws_data>plug_consumption} KW"/>
+                        	text="{sim_data>plug_consumption} KW"/>
                     </cells>
                 </ColumnListItem>
             </items>

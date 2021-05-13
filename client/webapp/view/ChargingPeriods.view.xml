@@ -7,7 +7,7 @@
     <Page 
     	title="{i18n>ChargingPeriods}">
         <Table 
-            items="{ws_data>/charging_periods}"
+            items="{sim_data>/charging_periods}"
             fixedLayout="false">
             <columns>
                 <Column>
@@ -35,19 +35,19 @@
                 <ColumnListItem>
                     <cells>
                         <Text 
-                            text="{ws_data>id}"/>
+                            text="{sim_data>id}"/>
                         <Link 
-                         text="{ws_data>car_id}"
-                         enabled="{= !!${ws_data>car_id} }"
-                         href="{ parts: [ 'ws_data>car_id' ], formatter: '.formatCarHref' }"/>
+                         text="{sim_data>car_id}"
+                         enabled="{= !!${sim_data>car_id} }"
+                         href="{ parts: [ 'sim_data>car_id' ], formatter: '.formatCarHref' }"/>
                         <Link 
-                         text="{ws_data>plug_id}"
-                         enabled="{= !!${ws_data>plug_id} }"
-                         href="{ parts: [ 'ws_data>plug_id' ], formatter: '.formatPlugHref' }"/>                         
+                         text="{sim_data>plug_id}"
+                         enabled="{= !!${sim_data>plug_id} }"
+                         href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>                         
                         <Text 
-                            text="{ parts: [ 'ws_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>                            
+                            text="{ parts: [ 'sim_data>start_datetime' ], formatter: '.formatEventDatetime' }"/>                            
                         <Text 
-                            text="{ parts: [ 'ws_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>                                                    
+                            text="{ parts: [ 'sim_data>end_datetime' ], formatter: '.formatEventDatetime' }"/>                                                    
                     </cells>
                 </ColumnListItem>
             </items>

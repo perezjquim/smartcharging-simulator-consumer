@@ -20,6 +20,9 @@ sap.ui.define([
                 'command_args': {}
             });
 
+            const oMiscModel = this.getModel("misc");
+            oMiscModel.setProperty("/ws_suspended", false);
+
             const sText = this.getText("start_sim_toast_msg");
             this.toast(sText);
 

@@ -19,7 +19,7 @@ sap.ui.define([
 			this.setBusy(true);
 
 			const oSource = oEvent.getSource();
-			const oContext = oSource.getBindingContext("ws_data");
+			const oContext = oSource.getBindingContext("sim_data");
 
 			const iPlugId = oContext.getProperty("id");
 			const sPlugStatus = oContext.getProperty("status");

@@ -67,7 +67,7 @@ sap.ui.define([
                         }
                 },
                 formatPlugHref: function(iPlugId) {
-                        const oModel = this.getModel("ws_data");
+                        const oModel = this.getModel("sim_data");
                         const oPlugs = oModel.getProperty("/plugs");
                         if (oPlugs && oPlugs.length > 0) {
                                 const iIndex = oPlugs.findIndex(function(oPlug) {
@@ -79,7 +79,7 @@ sap.ui.define([
                         }
                 },
                 formatCarHref: function(iCarId) {
-                        const oModel = this.getModel("ws_data");
+                        const oModel = this.getModel("sim_data");
                         const oCars = oModel.getProperty("/cars");
                         if (oCars && oCars.length > 0) {
                                 const iIndex = oCars.findIndex(function(oCar) {

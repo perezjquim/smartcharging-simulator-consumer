@@ -53,6 +53,39 @@ sap.ui.define([
 			} else {
 				this._oSimMenu.openBy(oSource);
 			}
+		},
+		onSelectSim: function(oEvent) {
+			this.setBusy(true);
+
+			const oList = oEvent.getSource();
+			const oListItems = oList.getItems();
+			const iNumberOfListItems = oListItems.length;
+
+			const oListItem = oEvent.getParameter("listItem");
+			const oContext = oListItem.getBindingContext("sim_list");
+			const iListItemIdx = oList.indexOfItem(oListItem) + 1;
+			const iSimulationId = oContext.getProperty("id");
+
+			const oMiscModel = this.getModel("misc");
+			const bIsWsSuspended = (iListItemIdx < iNumberOfListItems)
+			oMiscModel.setProperty("/ws_suspended", bIsWsSuspended);
+
+			const oConfigModel = this.getModel("config");
+			const sApiUrl = oConfigModel.getProperty("/API_URL");
+			const sEndpointUrl = `${sApiUrl}/get_sim_data_by_id/${iSimulationId}`;
+
+			const oModel = this.getModel("sim_data");
+			oModel.loadData(sEndpointUrl).then(function() {
+				const sText = this.getText("sim_select_succ");
+				this.toast(sText);
+			}.bind(this)).catch(function() {
+				const sText = this.getText("sim_select_err");
+				this.toast(sText);
+			}.bind(this)).finally(function() {
+				oList.removeSelections(true);
+				this._oSimMenu.close();
+				this.setBusy(false);
+			}.bind(this));
 		}
 	});
 });

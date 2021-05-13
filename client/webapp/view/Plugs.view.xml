@@ -8,7 +8,7 @@
     <Page 
     	title="{i18n>Plugs}">
         <Table 
-            items="{ws_data>/plugs}"
+            items="{sim_data>/plugs}"
             fixedLayout="false">
             <columns>
                 <Column>
@@ -32,16 +32,16 @@
                 <ColumnListItem type="Navigation" press="onItemPress">
                     <cells>
                         <Text 
-                            text="{ws_data>id}"/>
+                            text="{sim_data>id}"/>
                         <Switch 
-                             state="{= ${ws_data>status} === 'enabled' }"
+                             state="{= ${sim_data>status} === 'enabled' }"
                              change="onTogglePlugStatus"/>
                         <Link 
-                         text="{ws_data>plugged_car_id}"
-                         enabled="{= !!${ws_data>plugged_car_id} }"
-                         href="{ parts: [ 'ws_data>plugged_car_id' ], formatter: '.formatCarHref' }"/>
+                         text="{sim_data>plugged_car_id}"
+                         enabled="{= !!${sim_data>plugged_car_id} }"
+                         href="{ parts: [ 'sim_data>plugged_car_id' ], formatter: '.formatCarHref' }"/>
                         <Text 
-                            text="{ws_data>energy_consumption} KW"/>                                       
+                            text="{sim_data>energy_consumption} KW"/>                                       
                     </cells>
                 </ColumnListItem>
             </items>

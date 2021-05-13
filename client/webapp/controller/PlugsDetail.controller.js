@@ -12,7 +12,7 @@ sap.ui.define([
 			const sPath = `/plugs/${iIndex}`;
 			const oView = this.getView();
 			oView.bindElement({
-				model: "ws_data",
+				model: "sim_data",
 				path: sPath
 			});
 		}

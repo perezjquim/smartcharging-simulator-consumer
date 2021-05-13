@@ -29,7 +29,7 @@ sap.ui.define([
                         }
                 },
                 _storeState: function(oData) {
-                        const oModel = this._oController.getModel("ws_state");
+                        const oModel = this._oController.getModel("sim_state");
 
                         oModel.setProperty("/is_sim_running", oData.is_sim_running);
 
@@ -37,11 +37,16 @@ sap.ui.define([
                         oModel.setProperty("/config", sConfig);
                 },
                 _storeData: function(oData) {
-                        const oModel = this._oController.getModel("ws_data");
-                        oModel.setData(oData);
+                        const oMiscModel = this._oController.getModel("misc");
+                        const bIsWsSuspended = oMiscModel.getProperty("/ws_suspended");
+
+                        if (!bIsWsSuspended) {
+                                const oModel = this._oController.getModel("sim_data");
+                                oModel.setData(oData);
+                        }
                 },
                 _storeSimList: function(oData) {
-                        const oModel = this._oController.getModel("ws_sim_list");
+                        const oModel = this._oController.getModel("sim_list");
                         oModel.setData(oData);
                 }
         });
