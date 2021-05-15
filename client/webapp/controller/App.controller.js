@@ -86,7 +86,15 @@ sap.ui.define([
 					this.onAfterSelectSim(oList);
 				}.bind(this));
 			} else {
-				this.onAfterSelectSim(oList);
+				SocketHelper.reconnect().then(function() {
+					const sText = this.getText("sim_select_succ");
+					this.toast(sText);
+				}.bind(this)).catch(function() {
+					const sText = this.getText("sim_select_err");
+					this.toast(sText);
+				}.bind(this)).finally(function() {
+					this.onAfterSelectSim(oList);
+				}.bind(this));
 			}
 		},
 		onAfterSelectSim: function(oList) {
