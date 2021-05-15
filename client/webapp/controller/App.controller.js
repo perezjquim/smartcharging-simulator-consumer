@@ -70,22 +70,29 @@ sap.ui.define([
 			const bIsWsSuspended = (iListItemIdx < iNumberOfListItems)
 			oMiscModel.setProperty("/ws_suspended", bIsWsSuspended);
 
-			const oConfigModel = this.getModel("config");
-			const sApiUrl = oConfigModel.getProperty("/API_URL");
-			const sEndpointUrl = `${sApiUrl}/get_sim_data_by_id/${iSimulationId}`;
+			if (bIsWsSuspended) {
+				const oConfigModel = this.getModel("config");
+				const sApiUrl = oConfigModel.getProperty("/API_URL");
+				const sEndpointUrl = `${sApiUrl}/get_sim_data_by_id/${iSimulationId}`;
 
-			const oModel = this.getModel("sim_data");
-			oModel.loadData(sEndpointUrl).then(function() {
-				const sText = this.getText("sim_select_succ");
-				this.toast(sText);
-			}.bind(this)).catch(function() {
-				const sText = this.getText("sim_select_err");
-				this.toast(sText);
-			}.bind(this)).finally(function() {
-				oList.removeSelections(true);
-				this._oSimMenu.close();
-				this.setBusy(false);
-			}.bind(this));
+				const oModel = this.getModel("sim_data");
+				oModel.loadData(sEndpointUrl).then(function() {
+					const sText = this.getText("sim_select_succ");
+					this.toast(sText);
+				}.bind(this)).catch(function() {
+					const sText = this.getText("sim_select_err");
+					this.toast(sText);
+				}.bind(this)).finally(function() {
+					this.onAfterSelectSim(oList);
+				}.bind(this));
+			} else {
+				this.onAfterSelectSim(oList);
+			}
+		},
+		onAfterSelectSim: function(oList) {
+			oList.removeSelections(true);
+			this._oSimMenu.close();
+			this.setBusy(false);
 		}
 	});
 });

@@ -12,7 +12,8 @@
                <Title text="{i18n>plug_id}{sim_data>id}"/>
                <layout:VerticalLayout>
                   <Label text="{i18n>plug_status}"/>                  
-                  <Switch 
+                  <Switch
+                     enabled="{= ${sim_state>/is_sim_running} &amp;&amp; !${misc>/ws_suspended} }" 
                      state="{= ${sim_data>status} === 'enabled' }"
                      change="onTogglePlugStatus"/>
                </layout:VerticalLayout>
