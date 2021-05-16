@@ -70,6 +70,9 @@ sap.ui.define([
 			const bIsWsSuspended = (iListItemIdx < iNumberOfListItems)
 			oMiscModel.setProperty("/ws_suspended", bIsWsSuspended);
 
+			const sSuccessText = this.getText("sim_select_succ");
+			const sErrorText = this.getText("sim_select_err");
+
 			if (bIsWsSuspended) {
 				const oConfigModel = this.getModel("config");
 				const sApiUrl = oConfigModel.getProperty("/API_URL");
@@ -77,21 +80,17 @@ sap.ui.define([
 
 				const oModel = this.getModel("sim_data");
 				oModel.loadData(sEndpointUrl).then(function() {
-					const sText = this.getText("sim_select_succ");
-					this.toast(sText);
+					this.toast(sSuccessText);
 				}.bind(this)).catch(function() {
-					const sText = this.getText("sim_select_err");
-					this.toast(sText);
+					this.toast(sErrorText);
 				}.bind(this)).finally(function() {
 					this.onAfterSelectSim(oList);
 				}.bind(this));
 			} else {
 				SocketHelper.reconnect().then(function() {
-					const sText = this.getText("sim_select_succ");
-					this.toast(sText);
+					this.toast(sSuccessText);
 				}.bind(this)).catch(function() {
-					const sText = this.getText("sim_select_err");
-					this.toast(sText);
+					this.toast(sErrorText);
 				}.bind(this)).finally(function() {
 					this.onAfterSelectSim(oList);
 				}.bind(this));
