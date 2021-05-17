@@ -58,16 +58,10 @@ sap.ui.define([
 			this.setBusy(true);
 
 			const oList = oEvent.getSource();
-			const oListItems = oList.getItems();
-			const iNumberOfListItems = oListItems.length;
-
 			const oListItem = oEvent.getParameter("listItem");
 			const oContext = oListItem.getBindingContext("sim_list");
-			const iListItemIdx = oList.indexOfItem(oListItem) + 1;
-			const iSimulationId = oContext.getProperty("id");
 
-			const oMiscModel = this.getModel("misc");
-			const bIsWsSuspended = (iListItemIdx < iNumberOfListItems)
+			const bIsWsSuspended = !(oContext.getProperty("is_running"));
 			oMiscModel.setProperty("/ws_suspended", bIsWsSuspended);
 
 			const sSuccessText = this.getText("sim_select_succ");
