@@ -61,6 +61,7 @@ sap.ui.define([
 			const oListItem = oEvent.getParameter("listItem");
 			const oContext = oListItem.getBindingContext("sim_list");
 
+			const iSimulationId = oContext.getProperty("id");
 			const bIsWsSuspended = !(oContext.getProperty("is_running"));
 			const oMiscModel = this.getModel("misc");
 			oMiscModel.setProperty("/ws_suspended", bIsWsSuspended);
