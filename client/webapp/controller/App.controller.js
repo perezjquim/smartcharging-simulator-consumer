@@ -62,6 +62,7 @@ sap.ui.define([
 			const oContext = oListItem.getBindingContext("sim_list");
 
 			const bIsWsSuspended = !(oContext.getProperty("is_running"));
+			const oMiscModel = this.getModel("misc");
 			oMiscModel.setProperty("/ws_suspended", bIsWsSuspended);
 
 			const sSuccessText = this.getText("sim_select_succ");
