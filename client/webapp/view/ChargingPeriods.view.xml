@@ -37,11 +37,11 @@
                         <Text 
                             text="{sim_data>id}"/>
                         <Link 
-                         text="{sim_data>car_id}"
+                         text="{sim_data>car_alias}"
                          enabled="{= !!${sim_data>car_id} }"
                          href="{ parts: [ 'sim_data>car_id' ], formatter: '.formatCarHref' }"/>
                         <Link 
-                         text="{sim_data>plug_id}"
+                         text="{sim_data>plug_alias}"
                          enabled="{= !!${sim_data>plug_id} }"
                          href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>                         
                         <Text 

@@ -36,7 +36,7 @@
                 <ColumnListItem type="Navigation" press="onItemPress">
                     <cells>
                         <Text 
-                        	text="{sim_data>id}"/>
+                        	text="{sim_data>alias}"/>
                         <ObjectStatus
 				            text="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatusText' }"
 				            icon="{ parts: [ 'sim_data>status' ], formatter: '.formatCarStatusIcon' }"
@@ -48,7 +48,7 @@
                             state="{ parts: [ 'sim_data>battery_level' ], formatter: '.formatBatteryLevelState' }"
                             showValue="true" />
                         <Link 
-                            text="{sim_data>plug_id}"
+                            text="{sim_data>plug_alias}"
                             enabled="{= !!${sim_data>plug_id} }"
                             href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>                            
                         <Text 

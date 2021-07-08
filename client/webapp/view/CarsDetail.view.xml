@@ -9,7 +9,7 @@
          <uxap:ObjectPageHeaderContent class="z_objectpageheadercontent">
             <uxap:content>
                <Avatar src="sap-icon://car-rental" displaySize="M" backgroundColor="Accent2"/>
-               <Title text="{i18n>car_id}{sim_data>id}"/>
+               <Title text="{i18n>car_id}{sim_data>alias}"/>
                <layout:VerticalLayout>
                   <Label text="{i18n>car_status}"/>
                   <ObjectStatus
@@ -29,7 +29,7 @@
                <layout:VerticalLayout>
                   <Label text="{i18n>plug_id}"/>
                   <Link 
-                      text="{sim_data>plug_id}"
+                      text="{sim_data>plug_alias}"
                       enabled="{= !!${sim_data>plug_id} }"
                       href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>        
                </layout:VerticalLayout>                     
@@ -123,7 +123,7 @@
                                  <Text 
                                     text="{sim_data>id}"/>
                                  <Link 
-                                  text="{sim_data>plug_id}"
+                                  text="{sim_data>plug_alias}"
                                   enabled="{= !!${sim_data>plug_id} }"
                                   href="{ parts: [ 'sim_data>plug_id' ], formatter: '.formatPlugHref' }"/>                                               
                                  <Text 

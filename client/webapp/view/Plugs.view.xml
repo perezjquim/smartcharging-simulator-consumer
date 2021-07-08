@@ -32,13 +32,13 @@
                 <ColumnListItem type="Navigation" press="onItemPress">
                     <cells>
                         <Text 
-                            text="{sim_data>id}"/>
+                            text="{sim_data>alias}"/>
                         <Switch 
                             enabled="{= ${sim_state>/is_sim_running} &amp;&amp; !${misc>/ws_suspended} }" 
                             state="{= ${sim_data>status} === 'enabled' }"
                             change="onTogglePlugStatus"/>
                         <Link 
-                         text="{sim_data>plugged_car_id}"
+                         text="{sim_data>plugged_car_alias}"
                          enabled="{= !!${sim_data>plugged_car_id} }"
                          href="{ parts: [ 'sim_data>plugged_car_id' ], formatter: '.formatCarHref' }"/>
                         <Text 
