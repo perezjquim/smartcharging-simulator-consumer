@@ -15,11 +15,11 @@ sap.ui.define([
       });
     },
     formatBatteryLevelValue: function(iBatteryLevel) {
-      const iPercentValue = ((iBatteryLevel / 10) * 100);
+      const iPercentValue = ((iBatteryLevel / 10) * 100).toFixed(2);
       return iPercentValue;
     },
     formatBatteryLevelText: function(iBatteryLevel) {
-      const iPercentage = (iBatteryLevel / 10) * 100;
+      const iPercentage = ((iBatteryLevel / 10) * 100).toFixed(2);
       return `${iPercentage}% (${iBatteryLevel} / 10)`;
     },
     formatBatteryLevelState: function(iBatteryLevel) {
